@@ -1,243 +1,232 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anime Manga</title>
 
-    <title>Anime Manga</title>
-
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #0b0b12;
-            color: white;
-        }
-
-        header {
-            background: #151522;
-            padding: 18px 25px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: #ff3d71;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 15px;
-        }
-
-        .hero {
-            padding: 70px 25px;
-            text-align: center;
-            background: linear-gradient(135deg, #21152d, #10101a);
-        }
-
-        .hero h1 {
-            font-size: 42px;
-            margin-bottom: 15px;
-        }
-
-        .hero span {
-            color: #ff3d71;
-        }
-
-        .hero p {
-            color: #bbb;
-            margin-bottom: 25px;
-        }
-
-        .search {
-            width: 90%;
-            max-width: 500px;
-            padding: 15px;
-            border: none;
-            border-radius: 25px;
-            outline: none;
-            font-size: 16px;
-        }
-
-        .container {
-            padding: 30px 20px;
-        }
-
-        .title {
-            margin-bottom: 20px;
-            font-size: 26px;
-        }
-
-        .anime-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-            gap: 20px;
-        }
-
-        .card {
-            background: #171722;
-            border-radius: 12px;
-            overflow: hidden;
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-5px);
-        }
-
-        .poster {
-            height: 220px;
-            background: linear-gradient(135deg, #ff3d71, #612cff);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 45px;
-        }
-
-        .card-info {
-            padding: 15px;
-        }
-
-        .card h3 {
-            margin-bottom: 8px;
-        }
-
-        .card p {
-            color: #999;
-            font-size: 14px;
-        }
-
-        .button {
-            display: inline-block;
-            margin-top: 12px;
-            background: #ff3d71;
-            color: white;
-            padding: 9px 14px;
-            border-radius: 20px;
-            text-decoration: none;
-            font-size: 14px;
-        }
-
-        footer {
-            text-align: center;
-            padding: 30px;
-            margin-top: 30px;
-            background: #151522;
-            color: #888;
-        }
-    </style>
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{
+  font-family:Arial,sans-serif;
+  background:#08080f;
+  color:white;
+}
+header{
+  background:#11101c;
+  padding:18px 6%;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  position:sticky;
+  top:0;
+  z-index:10;
+  border-bottom:1px solid #292438;
+}
+.logo{
+  color:#ff3d81;
+  font-size:25px;
+  font-weight:900;
+}
+nav a{
+  color:white;
+  text-decoration:none;
+  margin-left:25px;
+  font-weight:bold;
+}
+.hero{
+  text-align:center;
+  padding:80px 20px;
+  background:
+  radial-gradient(circle at top,#422052,#100d1c 60%);
+}
+.hero h1{font-size:48px;margin-bottom:15px}
+.hero h1 span{color:#ff3d81}
+.hero p{color:#bbb;font-size:18px;margin-bottom:30px}
+.search{
+  width:90%;
+  max-width:650px;
+  padding:18px 25px;
+  border:none;
+  border-radius:40px;
+  font-size:16px;
+  outline:none;
+}
+.container{padding:45px 6%}
+.title{
+  font-size:28px;
+  margin-bottom:25px;
+}
+.title span{color:#ff3d81}
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+  gap:22px;
+}
+.card{
+  background:#151420;
+  border-radius:15px;
+  overflow:hidden;
+  transition:.3s;
+  border:1px solid #252235;
+}
+.card:hover{
+  transform:translateY(-7px);
+  border-color:#ff3d81;
+  box-shadow:0 10px 30px #0008;
+}
+.card img{
+  width:100%;
+  height:270px;
+  object-fit:cover;
+  display:block;
+}
+.info{padding:15px}
+.info h3{
+  font-size:17px;
+  margin-bottom:10px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+.rating{color:#ffd43b}
+.type{
+  color:#aaa;
+  font-size:13px;
+  margin-top:7px;
+}
+.loading{
+  text-align:center;
+  color:#aaa;
+  padding:40px;
+}
+footer{
+  text-align:center;
+  padding:35px;
+  background:#11101c;
+  color:#888;
+  margin-top:30px;
+}
+@media(max-width:600px){
+  .hero{padding:60px 15px}
+  .hero h1{font-size:36px}
+  header{padding:15px 20px}
+  nav a{margin-left:10px;font-size:14px}
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+  }
+  .card img{height:230px}
+}
+</style>
 </head>
 
 <body>
 
 <header>
-    <div class="logo">ANIME MANGA</div>
-
-    <nav>
-        <a href="#">Accueil</a>
-        <a href="#">Anime</a>
-        <a href="#">Manga</a>
-    </nav>
+  <div class="logo">ANIME MANGA</div>
+  <nav>
+    <a href="#">Accueil</a>
+    <a href="#anime">Anime</a>
+  </nav>
 </header>
 
 <section class="hero">
-    <h1>Bienvenue sur <span>Anime Manga</span></h1>
-    <p>Découvrez vos anime et manga préférés.</p>
+  <h1>Bienvenue sur <span>Anime Manga</span></h1>
+  <p>Découvrez vos anime et manga préférés.</p>
 
-    <input
-        class="search"
-        type="text"
-        placeholder="Rechercher un anime ou manga..."
-    >
+  <input
+    id="search"
+    class="search"
+    type="text"
+    placeholder="🔎 Rechercher un anime ou manga..."
+  >
 </section>
 
-<section class="container">
-
-    <h2 class="title">🔥 Anime populaires</h2>
-
-    <div class="anime-grid">
-
-        <div class="card">
-            <div class="poster">⚔️</div>
-            <div class="card-info">
-                <h3>One Piece</h3>
-                <p>Anime • Action • Aventure</p>
-                <a href="#" class="button">Voir plus</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="poster">🍥</div>
-            <div class="card-info">
-                <h3>Naruto</h3>
-                <p>Anime • Action • Ninja</p>
-                <a href="#" class="button">Voir plus</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="poster">⚡</div>
-            <div class="card-info">
-                <h3>Jujutsu Kaisen</h3>
-                <p>Anime • Action • Fantastique</p>
-                <a href="#" class="button">Voir plus</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="poster">👹</div>
-            <div class="card-info">
-                <h3>Demon Slayer</h3>
-                <p>Anime • Action • Drame</p>
-                <a href="#" class="button">Voir plus</a>
-            </div>
-        </div>
-
-    </div>
-
-</section>
-
-<section class="container">
-
-    <h2 class="title">📚 Manga</h2>
-
-    <div class="anime-grid">
-
-        <div class="card">
-            <div class="poster">📖</div>
-            <div class="card-info">
-                <h3>One Piece Manga</h3>
-                <p>Manga • Aventure</p>
-                <a href="#" class="button">Lire plus</a>
-            </div>
-        </div>
-
-        <div class="card">
-            <div class="poster">📖</div>
-            <div class="card-info">
-                <h3>Naruto Manga</h3>
-                <p>Manga • Action</p>
-                <a href="#" class="button">Lire plus</a>
-            </div>
-        </div>
-
-    </div>
-
+<section class="container" id="anime">
+  <h2 class="title">🔥 Anime <span>populaires</span></h2>
+  <div id="animeList" class="grid">
+    <div class="loading">Chargement des anime...</div>
+  </div>
 </section>
 
 <footer>
-    © 2026 Anime Manga — Tous droits réservés
+  © 2026 Anime Manga — Tous droits réservés
 </footer>
 
+<script>
+const list = document.getElementById("animeList");
+const search = document.getElementById("search");
+
+async function loadAnime(url){
+  list.innerHTML = '<div class="loading">Chargement...</div>';
+
+  try{
+    const response = await fetch(url);
+    const data = await response.json();
+
+    if(!data.data || data.data.length === 0){
+      list.innerHTML = '<div class="loading">Aucun anime trouvé.</div>';
+      return;
+    }
+
+    list.innerHTML = "";
+
+    data.data.forEach(anime=>{
+      const title = anime.title || "Anime";
+      const image =
+        anime.images?.jpg?.large_image_url ||
+        anime.images?.jpg?.image_url;
+
+      const score = anime.score ? anime.score.toFixed(1) : "N/A";
+      const type = anime.type || "Anime";
+
+      const card = document.createElement("div");
+      card.className = "card";
+
+      card.innerHTML = `
+        <img src="${image}" alt="${title}">
+        <div class="info">
+          <h3>${title}</h3>
+          <div class="rating">⭐ ${score}</div>
+          <div class="type">${type}</div>
+        </div>
+      `;
+
+      list.appendChild(card);
+    });
+
+  }catch(error){
+    list.innerHTML =
+      '<div class="loading">Impossible de charger les anime. Vérifiez votre connexion.</div>';
+  }
+}
+
+loadAnime(
+ "https://api.jikan.moe/v4/top/anime?limit=12"
+);
+
+let timer;
+
+search.addEventListener("input",()=>{
+  clearTimeout(timer);
+
+  timer=setTimeout(()=>{
+    const q=search.value.trim();
+
+    if(q.length < 2){
+      loadAnime("https://api.jikan.moe/v4/top/anime?limit=12");
+      return;
+    }
+
+    loadAnime(
+      "https://api.jikan.moe/v4/anime?q="+
+      encodeURIComponent(q)+
+      "&limit=12"
+    );
+  },500);
+});
+</script>
+
 </body>
-  </html>
+</html>
