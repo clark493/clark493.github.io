@@ -158,20 +158,20 @@ footer{
 const list = document.getElementById("animeList");
 const search = document.getElementById("search");
 
-async function loadAnime(url){
+async function loadAnime(url) {
   list.innerHTML = '<div class="loading">Chargement...</div>';
 
-  try{
+  try {
     const response = await fetch(url);
 
-    if(!response.ok){
-      throw new Error("Erreur API");
+    if (!response.ok) {
+      throw new Error("Erreur API : " + response.status);
     }
 
     const data = await response.json();
 
-    if(!data.data || data.data.length === 0){
-      list.innerHTML = '<div class="loading">Aucun anime trouvé</div>';
+    if (!data.data || data.data.length === 0) {
+      list.innerHTML = '<div class="loading">Aucun anime trouvé.</div>';
       return;
     }
 
@@ -210,16 +210,14 @@ async function loadAnime(url){
       list.appendChild(card);
     });
 
-  }catch(error){
+  } catch (error) {
     console.error(error);
     list.innerHTML =
       '<div class="loading">Impossible de charger les anime.</div>';
   }
 }
 
-loadAnime(
-  "https://api.jikan.moe/v4/top/anime?limit=12"
-);
+loadAnime("https://api.jikan.moe/v4/top/anime?limit=12");
 
 let timer;
 
@@ -229,10 +227,8 @@ search.addEventListener("input", () => {
   timer = setTimeout(() => {
     const q = search.value.trim();
 
-    if(q.length < 2){
-      loadAnime(
-        "https://api.jikan.moe/v4/top/anime?limit=12"
-      );
+    if (q.length < 2) {
+      loadAnime("https://api.jikan.moe/v4/top/anime?limit=12");
       return;
     }
 
@@ -243,6 +239,7 @@ search.addEventListener("input", () => {
     );
   }, 500);
 });
+
 </script>
 </body>
 </html>
