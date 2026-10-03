@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#080711">
-<title>AnimeZone</title>
+<title>RABESAIKY ANIME</title>
 
 <style>
 *{
@@ -44,33 +44,43 @@ header{
 
 .navbar{
   max-width:1200px;
-  height:72px;
+  min-height:72px;
   margin:auto;
   padding:0 20px;
   display:flex;
   align-items:center;
   justify-content:space-between;
+  gap:20px;
 }
 
 .logo{
-  font-size:28px;
-  font-weight:900;
+  display:flex;
+  align-items:center;
+  gap:10px;
   color:#ff2492;
+  font-size:25px;
+  font-weight:900;
+  white-space:nowrap;
 }
 
-.logo span{
-  color:white;
+.logo img{
+  width:43px;
+  height:43px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #ff2492;
 }
 
 nav{
   display:flex;
+  align-items:center;
   gap:25px;
 }
 
 nav a{
   color:white;
   font-weight:bold;
-  font-size:16px;
+  font-size:15px;
 }
 
 nav a:hover,
@@ -89,94 +99,127 @@ nav a.active{
 
 /* HERO */
 .hero{
-  max-width:1000px;
+  max-width:1200px;
   margin:auto;
+  padding:70px 20px 45px;
   text-align:center;
-  padding:65px 20px 45px;
 }
 
 .hero h1{
-  font-size:clamp(38px,7vw,58px);
+  font-size:48px;
+  line-height:1.1;
+  margin-bottom:15px;
+}
+
+.hero h1 span{
   color:#ff2492;
-  margin-bottom:12px;
 }
 
 .hero p{
-  color:#bdb8ca;
-  font-size:19px;
-  margin-bottom:30px;
+  color:#b9b5c5;
+  max-width:700px;
+  margin:0 auto 25px;
+  line-height:1.6;
+  font-size:16px;
 }
 
 .search{
   max-width:650px;
   margin:auto;
+  display:flex;
+  gap:10px;
 }
 
 .search input{
-  width:100%;
-  padding:18px 24px;
-  border:0;
-  outline:0;
-  border-radius:35px;
-  background:white;
-  color:#111;
-  font-size:18px;
+  flex:1;
+  min-width:0;
+  padding:15px 18px;
+  border-radius:12px;
+  border:1px solid #342d48;
+  background:#141120;
+  color:white;
+  outline:none;
+  font-size:15px;
 }
 
-/* MAIN */
-main{
+.search input:focus{
+  border-color:#ff2492;
+}
+
+.search button{
+  border:0;
+  border-radius:12px;
+  padding:0 22px;
+  background:#ff2492;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.search button:hover{
+  opacity:.85;
+}
+
+/* SECTION */
+.section{
   max-width:1200px;
   margin:auto;
-  padding:25px 20px 70px;
+  padding:25px 20px 60px;
 }
 
 .section-title{
   display:flex;
   align-items:center;
-  gap:10px;
-  font-size:32px;
-  margin:20px 0 25px;
+  justify-content:space-between;
+  gap:15px;
+  margin-bottom:25px;
+}
+
+.section-title h2{
+  font-size:27px;
 }
 
 .section-title span{
   color:#ff2492;
+  font-size:14px;
 }
 
-/* GRID */
-.anime-grid{
+/* CARDS */
+.grid{
   display:grid;
   grid-template-columns:repeat(4,1fr);
-  gap:22px;
+  gap:20px;
 }
 
 .card{
-  background:#14121e;
-  border:1px solid #29243a;
-  border-radius:18px;
+  background:#11101b;
+  border:1px solid #272338;
+  border-radius:15px;
   overflow:hidden;
   transition:.25s;
+  cursor:pointer;
 }
 
 .card:hover{
-  transform:translateY(-6px);
+  transform:translateY(-5px);
   border-color:#ff2492;
-  box-shadow:0 12px 30px rgba(255,36,146,.18);
+  box-shadow:0 10px 30px rgba(255,36,146,.12);
 }
 
-.poster{
+.card-img{
   width:100%;
-  height:330px;
+  height:300px;
   object-fit:cover;
   display:block;
-  background:linear-gradient(135deg,#ff2492,#3020a3);
+  background:#191624;
 }
 
 .card-body{
-  padding:16px;
+  padding:15px;
 }
 
 .card-title{
-  font-size:19px;
+  font-size:17px;
   font-weight:bold;
   margin-bottom:10px;
   white-space:nowrap;
@@ -184,44 +227,80 @@ main{
   text-overflow:ellipsis;
 }
 
-.info{
+.meta{
   display:flex;
   justify-content:space-between;
-  align-items:center;
-  color:#aaa5b5;
-  font-size:14px;
-  margin-bottom:15px;
+  gap:8px;
+  color:#aaa5b7;
+  font-size:13px;
 }
 
 .score{
-  color:#ffd21c;
+  color:#ffd34d;
   font-weight:bold;
 }
 
-.watch-btn{
-  display:block;
-  width:100%;
-  padding:12px;
-  border:0;
-  border-radius:10px;
-  background:#ff2492;
-  color:white;
-  font-size:16px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.watch-btn:hover{
-  background:#ff4aa8;
-}
-
-/* EMPTY */
 .empty{
-  display:none;
   text-align:center;
+  color:#aaa5b7;
   padding:50px 20px;
-  color:#aaa5b5;
-  font-size:18px;
+  grid-column:1/-1;
+}
+
+/* LOADING */
+.loading{
+  text-align:center;
+  padding:50px;
+  color:#aaa5b7;
+}
+
+.spinner{
+  width:35px;
+  height:35px;
+  margin:0 auto 15px;
+  border:4px solid #302b40;
+  border-top-color:#ff2492;
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+  to{transform:rotate(360deg);}
+}
+
+/* ABOUT */
+.about{
+  max-width:900px;
+  margin:0 auto;
+  background:#11101b;
+  border:1px solid #272338;
+  border-radius:18px;
+  padding:30px;
+  text-align:center;
+}
+
+.about h2{
+  margin-bottom:15px;
+  color:#ff2492;
+}
+
+.about p{
+  color:#b9b5c5;
+  line-height:1.7;
+}
+
+/* FOOTER */
+footer{
+  border-top:1px solid #29243a;
+  background:#0d0b15;
+  text-align:center;
+  padding:30px 20px;
+  color:#8f8a9e;
+  font-size:14px;
+}
+
+footer strong{
+  color:#ff2492;
 }
 
 /* MODAL */
@@ -229,11 +308,11 @@ main{
   position:fixed;
   inset:0;
   z-index:2000;
-  background:rgba(0,0,0,.82);
   display:none;
   align-items:center;
   justify-content:center;
   padding:20px;
+  background:rgba(0,0,0,.8);
 }
 
 .modal.show{
@@ -241,12 +320,11 @@ main{
 }
 
 .modal-box{
-  width:100%;
-  max-width:650px;
+  width:min(850px,100%);
   max-height:90vh;
-  overflow-y:auto;
-  background:#15121f;
-  border:1px solid #302a43;
+  overflow:auto;
+  background:#12101d;
+  border:1px solid #342d48;
   border-radius:20px;
   padding:25px;
   position:relative;
@@ -263,58 +341,68 @@ main{
   cursor:pointer;
 }
 
-.modal-poster{
+.modal-content{
+  display:grid;
+  grid-template-columns:220px 1fr;
+  gap:25px;
+}
+
+.modal-content img{
   width:100%;
-  max-height:350px;
+  height:310px;
   object-fit:cover;
-  border-radius:14px;
-  margin-bottom:18px;
+  border-radius:12px;
 }
 
-.modal h2{
-  color:#ff2492;
-  font-size:28px;
-  margin-bottom:10px;
-}
-
-.modal p{
-  color:#c7c2d0;
-  line-height:1.6;
-  margin-bottom:18px;
-}
-
-.modal-link{
-  display:block;
-  text-align:center;
-  padding:13px;
-  border-radius:10px;
-  background:#ff2492;
-  color:white;
-  font-weight:bold;
-}
-
-/* FOOTER */
-footer{
-  text-align:center;
-  padding:30px 20px;
-  border-top:1px solid #29243a;
-  color:#aaa5b5;
-}
-
-footer span{
+.modal-info h2{
+  font-size:30px;
+  margin:10px 0 15px;
   color:#ff2492;
 }
 
-/* MOBILE */
+.modal-info p{
+  color:#c0bbc9;
+  line-height:1.7;
+  margin-top:15px;
+}
+
+.tags{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.tag{
+  background:#211b30;
+  border:1px solid #382e4b;
+  border-radius:20px;
+  padding:7px 12px;
+  font-size:13px;
+}
+
+/* RESPONSIVE */
 @media(max-width:900px){
-  .anime-grid{
+  .grid{
     grid-template-columns:repeat(3,1fr);
+  }
+
+  .card-img{
+    height:280px;
   }
 }
 
-@media(max-width:650px){
+@media(max-width:700px){
   .navbar{
-    height:65px;
+    min-height:65px;
+  }
+
+  .logo{
+    font-size:20px;
+  }
+
+  .logo img{
+    width:38px;
+    height:38px;
   }
 
   nav{
@@ -322,11 +410,11 @@ footer span{
     position:absolute;
     top:65px;
     left:0;
-    width:100%;
+    right:0;
     background:#100d1c;
-    flex-direction:column;
     padding:20px;
-    gap:18px;
+    flex-direction:column;
+    align-items:flex-start;
     border-bottom:1px solid #29243a;
   }
 
@@ -342,13 +430,25 @@ footer span{
     padding-top:45px;
   }
 
-  .anime-grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:14px;
+  .hero h1{
+    font-size:35px;
   }
 
-  .poster{
-    height:260px;
+  .search{
+    flex-direction:column;
+  }
+
+  .search button{
+    padding:14px;
+  }
+
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+  }
+
+  .card-img{
+    height:240px;
   }
 
   .card-body{
@@ -356,21 +456,32 @@ footer span{
   }
 
   .card-title{
-    font-size:16px;
+    font-size:15px;
   }
 
-  .section-title{
-    font-size:25px;
-  }
-}
-
-@media(max-width:380px){
-  .anime-grid{
+  .modal-content{
     grid-template-columns:1fr;
   }
 
-  .poster{
-    height:380px;
+  .modal-content img{
+    height:300px;
+    max-width:220px;
+    margin:auto;
+  }
+}
+
+@media(max-width:400px){
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .card-img{
+    height:210px;
+  }
+
+  .section{
+    padding-left:12px;
+    padding-right:12px;
   }
 }
 </style>
@@ -381,320 +492,569 @@ footer span{
 <header>
   <div class="navbar">
 
-    <a href="#" class="logo">
-      Anime<span>Zone</span>
+    <a href="#home" class="logo">
+      <img src="profil.jpg" alt="RABESAIKY ANIME">
+      <span>RABESAIKY ANIME</span>
     </a>
 
-    <button class="menu" onclick="toggleMenu()">☰</button>
+    <button class="menu" id="menuBtn">☰</button>
 
     <nav id="nav">
-      <a href="#" class="active">Accueil</a>
+      <a href="#home" class="active">Accueil</a>
       <a href="#anime">Anime</a>
-      <a href="#recent">Récent</a>
+      <a href="#about">À propos</a>
     </nav>
 
   </div>
 </header>
 
-<section class="hero">
+<main>
 
-  <h1>AnimeZone</h1>
+<section class="hero" id="home">
+  <h1>Bienvenue sur <span>RABESAIKY ANIME</span></h1>
 
   <p>
-    Découvrez vos anime préférés et regardez-les facilement.
+    Découvrez des milliers d'anime, leurs informations,
+    leurs notes et leurs descriptions.
   </p>
 
   <div class="search">
     <input
-      type="search"
-      id="search"
+      type="text"
+      id="searchInput"
       placeholder="Rechercher un anime..."
       autocomplete="off"
     >
+    <button id="searchBtn">Rechercher</button>
+  </div>
+</section>
+
+
+<section class="section" id="anime">
+
+  <div class="section-title">
+    <h2>🔥 Anime populaires</h2>
+    <span id="count">Chargement...</span>
+  </div>
+
+  <div id="animeGrid" class="grid">
+    <div class="loading">
+      <div class="spinner"></div>
+      Chargement des anime...
+    </div>
   </div>
 
 </section>
 
-<main id="anime">
 
-  <h2 class="section-title">
-    <span>🔥</span> Anime populaires
-  </h2>
+<section class="section" id="about">
 
-  <div class="anime-grid" id="animeGrid"></div>
+  <div class="about">
+    <h2>À propos de RABESAIKY ANIME</h2>
 
-  <div class="empty" id="empty">
-    Aucun anime trouvé.
+    <p>
+      RABESAIKY ANIME est un site consacré aux fans d'anime.
+      Retrouvez les titres populaires, les scores, les épisodes,
+      les années de sortie et les descriptions.
+    </p>
   </div>
+
+</section>
 
 </main>
 
+
 <footer>
-  © 2026 <span>AnimeZone</span> — Tous droits réservés.
+  © 2026 <strong>RABESAIKY ANIME</strong> — Tous droits réservés.
 </footer>
+
 
 <!-- MODAL -->
 <div class="modal" id="modal">
 
   <div class="modal-box">
 
-    <button class="close" id="close">×</button>
+    <button class="close" id="closeModal">×</button>
 
-    <img
-      id="modalPoster"
-      class="modal-poster"
-      src=""
-      alt=""
-    >
+    <div class="modal-content">
 
-    <h2 id="modalTitle"></h2>
+      <img id="modalImage" src="" alt="">
 
-    <p id="modalDesc"></p>
+      <div class="modal-info">
 
-    <a
-      id="modalLink"
-      class="modal-link"
-      href="#"
-      target="_blank"
-      rel="noopener"
-    >
-      ▶ Regarder maintenant
-    </a>
+        <h2 id="modalTitle"></h2>
+
+        <div class="tags">
+          <span class="tag" id="modalType"></span>
+          <span class="tag" id="modalScore"></span>
+          <span class="tag" id="modalEpisodes"></span>
+          <span class="tag" id="modalYear"></span>
+        </div>
+
+        <p id="modalDescription"></p>
+
+      </div>
+
+    </div>
 
   </div>
 
 </div>
 
+
 <script>
+const API = "https://api.jikan.moe/v4";
 
-const animeList = [
+let ANIME_DATA = [];
 
-  {
-    title:"One Piece",
-    year:"1999",
-    score:"9.0",
-    image:"https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=800&q=80",
-    desc:"Suivez les aventures de Luffy et de son équipage à la recherche du légendaire One Piece.",
-    link:"#"
-  },
+
+/* ANIME DE SECOURS */
+const fallbackAnime = [
 
   {
+    id:1,
     title:"Naruto",
-    year:"2002",
-    score:"8.8",
-    image:"https://images.unsplash.com/photo-1612036782180-6f0b6cd846fe?auto=format&fit=crop&w=800&q=80",
-    desc:"Naruto Uzumaki rêve de devenir le meilleur ninja de son village.",
-    link:"#"
+    type:"TV",
+    score:8.4,
+    episodes:220,
+    year:2002,
+    image:"https://cdn.myanimelist.net/images/anime/13/17405l.jpg",
+    description:"Naruto Uzumaki est un jeune ninja qui rêve de devenir Hokage."
   },
 
   {
-    title:"Demon Slayer",
-    year:"2019",
-    score:"8.7",
-    image:"https://images.unsplash.com/photo-1607604276583-eef5d076aa5f?auto=format&fit=crop&w=800&q=80",
-    desc:"Tanjiro part combattre les démons afin de sauver sa sœur Nezuko.",
-    link:"#"
+    id:2,
+    title:"One Piece",
+    type:"TV",
+    score:8.7,
+    episodes:1100,
+    year:1999,
+    image:"https://cdn.myanimelist.net/images/anime/1244/138851l.jpg",
+    description:"Luffy et son équipage parcourent les mers à la recherche du légendaire One Piece."
   },
 
   {
-    title:"Jujutsu Kaisen",
-    year:"2020",
-    score:"8.9",
-    image:"https://images.unsplash.com/photo-1635805737707-575885ab0820?auto=format&fit=crop&w=800&q=80",
-    desc:"Yuji Itadori rejoint les exorcistes pour combattre les malédictions.",
-    link:"#"
-  },
-
-  {
-    title:"Attack on Titan",
-    year:"2013",
-    score:"9.1",
-    image:"https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
-    desc:"L'humanité tente de survivre derrière d'immenses murs face aux Titans.",
-    link:"#"
-  },
-
-  {
-    title:"My Hero Academia",
-    year:"2016",
-    score:"8.5",
-    image:"https://images.unsplash.com/photo-1577083552431-6e5fd01988a5?auto=format&fit=crop&w=800&q=80",
-    desc:"Izuku rêve de devenir un héros malgré son absence de pouvoir.",
-    link:"#"
-  },
-
-  {
-    title:"Dragon Ball",
-    year:"1986",
-    score:"8.8",
-    image:"https://images.unsplash.com/photo-1560419015-7c427e8ae5ba?auto=format&fit=crop&w=800&q=80",
-    desc:"Goku et ses amis vivent de nombreuses aventures à la recherche des Dragon Balls.",
-    link:"#"
-  },
-
-  {
+    id:3,
     title:"Bleach",
-    year:"2004",
-    score:"8.2",
-    image:"https://images.unsplash.com/photo-1614583225154-5fcdda07019e?auto=format&fit=crop&w=800&q=80",
-    desc:"Ichigo Kurosaki découvre le monde des Shinigami et doit protéger les humains.",
-    link:"#"
+    type:"TV",
+    score:8.2,
+    episodes:366,
+    year:2004,
+    image:"https://cdn.myanimelist.net/images/anime/3/40451l.jpg",
+    description:"Ichigo Kurosaki devient un Soul Reaper et protège les humains contre les Hollows."
   },
 
   {
-    title:"Solo Leveling",
-    year:"2024",
-    score:"8.9",
-    image:"https://images.unsplash.com/photo-1612198188060-c7c2a3b66eae?auto=format&fit=crop&w=800&q=80",
-    desc:"Sung Jin-Woo devient progressivement le chasseur le plus puissant.",
-    link:"#"
+    id:4,
+    title:"Demon Slayer",
+    type:"TV",
+    score:8.6,
+    episodes:55,
+    year:2019,
+    image:"https://cdn.myanimelist.net/images/anime/1286/99889l.jpg",
+    description:"Tanjiro combat les démons tout en cherchant un moyen de sauver sa sœur Nezuko."
   },
 
   {
-    title:"Death Note",
-    year:"2006",
-    score:"8.9",
-    image:"https://images.unsplash.com/photo-1516979187457-637abb4f9353?auto=format&fit=crop&w=800&q=80",
-    desc:"Light découvre un mystérieux carnet capable de tuer toute personne dont le nom y est inscrit.",
-    link:"#"
+    id:5,
+    title:"Jujutsu Kaisen",
+    type:"TV",
+    score:8.5,
+    episodes:47,
+    year:2020,
+    image:"https://cdn.myanimelist.net/images/anime/1171/109222l.jpg",
+    description:"Yuji Itadori rejoint les exorcistes et affronte de puissantes malédictions."
   },
 
   {
+    id:6,
+    title:"Attack on Titan",
+    type:"TV",
+    score:9.1,
+    episodes:89,
+    year:2013,
+    image:"https://cdn.myanimelist.net/images/anime/10/47347l.jpg",
+    description:"Eren et ses amis combattent les Titans qui menacent l'humanité."
+  },
+
+  {
+    id:7,
+    title:"Dragon Ball",
+    type:"TV",
+    score:8.4,
+    episodes:153,
+    year:1986,
+    image:"https://cdn.myanimelist.net/images/anime/6/20936l.jpg",
+    description:"Goku devient un puissant combattant et cherche les Dragon Balls."
+  },
+
+  {
+    id:8,
+    title:"Black Clover",
+    type:"TV",
+    score:8.1,
+    episodes:170,
+    year:2017,
+    image:"https://cdn.myanimelist.net/images/anime/2/88336l.jpg",
+    description:"Asta rêve de devenir Wizard King malgré son absence de magie."
+  },
+
+  {
+    id:9,
     title:"Hunter x Hunter",
-    year:"2011",
-    score:"9.0",
-    image:"https://images.unsplash.com/photo-1550745165-9bc0b252726f?auto=format&fit=crop&w=800&q=80",
-    desc:"Gon devient Hunter pour retrouver son père et découvre un monde rempli d'aventures.",
-    link:"#"
+    type:"TV",
+    score:9.0,
+    episodes:148,
+    year:2011,
+    image:"https://cdn.myanimelist.net/images/anime/1337/99013l.jpg",
+    description:"Gon part à la recherche de son père et devient Hunter."
   },
 
   {
-    title:"Chainsaw Man",
-    year:"2022",
-    score:"8.6",
-    image:"https://images.unsplash.com/photo-1531259683007-016a7b628fc3?auto=format&fit=crop&w=800&q=80",
-    desc:"Denji fusionne avec son démon Chainsaw et rejoint une organisation spéciale.",
-    link:"#"
+    id:10,
+    title:"Death Note",
+    type:"TV",
+    score:8.6,
+    episodes:37,
+    year:2006,
+    image:"https://cdn.myanimelist.net/images/anime/9/9453l.jpg",
+    description:"Light Yagami découvre un mystérieux cahier capable de tuer."
+  },
+
+  {
+    id:11,
+    title:"Solo Leveling",
+    type:"TV",
+    score:8.8,
+    episodes:25,
+    year:2024,
+    image:"https://cdn.myanimelist.net/images/anime/1801/142390l.jpg",
+    description:"Sung Jin-Woo devient progressivement le chasseur le plus puissant."
   }
 
 ];
 
-const grid = document.getElementById("animeGrid");
-const search = document.getElementById("search");
-const empty = document.getElementById("empty");
 
-const modal = document.getElementById("modal");
-const modalPoster = document.getElementById("modalPoster");
-const modalTitle = document.getElementById("modalTitle");
-const modalDesc = document.getElementById("modalDesc");
-const modalLink = document.getElementById("modalLink");
-const close = document.getElementById("close");
+/* AFFICHAGE */
+function afficherAnime(liste){
 
-function displayAnime(list){
+  const grid = document.getElementById("animeGrid");
 
   grid.innerHTML = "";
 
-  if(list.length === 0){
-    empty.style.display = "block";
+  if(!liste || liste.length === 0){
+
+    grid.innerHTML = `
+      <div class="empty">
+        Aucun anime trouvé.
+      </div>
+    `;
+
+    document.getElementById("count").textContent = "0 anime";
+
     return;
   }
 
-  empty.style.display = "none";
 
-  list.forEach(anime => {
+  document.getElementById("count").textContent =
+    liste.length + (liste.length > 1 ? " anime" : " anime");
+
+
+  liste.forEach((anime,index)=>{
 
     const card = document.createElement("article");
+
     card.className = "card";
 
+    const image =
+      anime.image ||
+      "https://via.placeholder.com/500x700?text=Anime";
+
+
     card.innerHTML = `
+
       <img
-        class="poster"
-        src="${anime.image}"
-        alt="${anime.title}"
+        class="card-img"
+        src="${image}"
+        alt="${escapeHTML(anime.title || "Anime")}"
         loading="lazy"
+        onerror="this.src='https://via.placeholder.com/500x700?text=Anime'"
       >
 
       <div class="card-body">
 
         <div class="card-title">
-          ${anime.title}
+          ${escapeHTML(anime.title || "Anime")}
         </div>
 
-        <div class="info">
-          <span>${anime.year}</span>
-          <span class="score">★ ${anime.score}</span>
-        </div>
+        <div class="meta">
+          <span>${escapeHTML(anime.type || "TV")}</span>
 
-        <button class="watch-btn">
-          ▶ Regarder
-        </button>
+          <span class="score">
+            ★ ${anime.score ?? "N/A"}
+          </span>
+        </div>
 
       </div>
     `;
 
-    card.querySelector(".watch-btn").onclick = () => {
-      openAnime(anime);
-    };
+
+    card.addEventListener("click",()=>ouvrirModal(anime));
 
     grid.appendChild(card);
 
   });
+
 }
 
-function openAnime(anime){
 
-  modalTitle.textContent = anime.title;
-  modalDesc.textContent = anime.desc;
-  modalPoster.src = anime.image;
-  modalPoster.alt = anime.title;
-  modalLink.href = anime.link;
+/* SECURITE */
+function escapeHTML(value){
 
-  modal.classList.add("show");
+  return String(value ?? "")
+    .replace(/&/g,"&amp;")
+    .replace(/</g,"&lt;")
+    .replace(/>/g,"&gt;")
+    .replace(/"/g,"&quot;")
+    .replace(/'/g,"&#039;");
+
 }
 
-function closeModal(){
-  modal.classList.remove("show");
-}
 
-close.onclick = closeModal;
+/* API JIKAN */
+async function chargerAnime(){
 
-modal.onclick = function(e){
-  if(e.target === modal){
-    closeModal();
+  try{
+
+    const response = await fetch(
+      `${API}/top/anime?limit=24`
+    );
+
+    if(!response.ok){
+      throw new Error("API indisponible");
+    }
+
+    const result = await response.json();
+
+    if(!result.data || !Array.isArray(result.data)){
+      throw new Error("Données invalides");
+    }
+
+
+    ANIME_DATA = result.data.map((anime,index)=>({
+
+      id: anime.mal_id || index + 1,
+
+      title:
+        anime.title ||
+        anime.title_english ||
+        "Anime",
+
+      type:
+        anime.type ||
+        "TV",
+
+      score:
+        anime.score ?? "N/A",
+
+      episodes:
+        anime.episodes || 0,
+
+      image:
+        anime.images?.jpg?.large_image_url ||
+        anime.images?.jpg?.image_url ||
+        anime.images?.webp?.large_image_url ||
+        "",
+
+      description:
+        anime.synopsis ||
+        "Aucune description disponible.",
+
+      year:
+        anime.year ||
+        anime.aired?.prop?.from?.year ||
+        "N/A"
+
+    }));
+
+
+    afficherAnime(ANIME_DATA);
+
+  }catch(error){
+
+    console.log(
+      "API non disponible, utilisation des anime de secours.",
+      error
+    );
+
+    ANIME_DATA = [...fallbackAnime];
+
+    afficherAnime(ANIME_DATA);
+
   }
-};
 
-document.addEventListener("keydown",function(e){
-  if(e.key === "Escape"){
-    closeModal();
-  }
-});
-
-search.addEventListener("input",function(){
-
-  const value = search.value.toLowerCase().trim();
-
-  const results = animeList.filter(anime =>
-    anime.title.toLowerCase().includes(value)
-  );
-
-  displayAnime(results);
-
-});
-
-function toggleMenu(){
-  document.getElementById("nav").classList.toggle("open");
 }
 
-document.querySelectorAll("nav a").forEach(link => {
-  link.addEventListener("click",function(){
-    document.getElementById("nav").classList.remove("open");
+
+/* RECHERCHE */
+function rechercher(){
+
+  const input =
+    document.getElementById("searchInput");
+
+  const text =
+    input.value.trim().toLowerCase();
+
+
+  if(!text){
+
+    afficherAnime(ANIME_DATA);
+
+    return;
+  }
+
+
+  const resultat =
+    ANIME_DATA.filter(anime=>
+
+      String(anime.title || "")
+        .toLowerCase()
+        .includes(text)
+
+    );
+
+
+  afficherAnime(resultat);
+
+  document.getElementById("anime")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+document
+  .getElementById("searchBtn")
+  .addEventListener("click",rechercher);
+
+
+document
+  .getElementById("searchInput")
+  .addEventListener("keydown",(event)=>{
+
+    if(event.key === "Enter"){
+      rechercher();
+    }
+
   });
+
+
+/* MODAL */
+function ouvrirModal(anime){
+
+  document.getElementById("modalTitle").textContent =
+    anime.title || "Anime";
+
+  document.getElementById("modalType").textContent =
+    "Type : " + (anime.type || "TV");
+
+  document.getElementById("modalScore").textContent =
+    "★ Score : " + (anime.score ?? "N/A");
+
+  document.getElementById("modalEpisodes").textContent =
+    "Épisodes : " + (anime.episodes || "N/A");
+
+  document.getElementById("modalYear").textContent =
+    "Année : " + (anime.year || "N/A");
+
+  document.getElementById("modalDescription").textContent =
+    anime.description ||
+    "Aucune description disponible.";
+
+
+  const image =
+    anime.image ||
+    "https://via.placeholder.com/500x700?text=Anime";
+
+
+  document.getElementById("modalImage").src = image;
+
+  document.getElementById("modalImage").alt =
+    anime.title || "Anime";
+
+
+  document
+    .getElementById("modal")
+    .classList.add("show");
+
+}
+
+
+function fermerModal(){
+
+  document
+    .getElementById("modal")
+    .classList.remove("show");
+
+}
+
+
+document
+  .getElementById("closeModal")
+  .addEventListener("click",fermerModal);
+
+
+document
+  .getElementById("modal")
+  .addEventListener("click",(event)=>{
+
+    if(event.target.id === "modal"){
+      fermerModal();
+    }
+
+  });
+
+
+document.addEventListener("keydown",(event)=>{
+
+  if(event.key === "Escape"){
+    fermerModal();
+  }
+
 });
 
-displayAnime(animeList);
+
+/* MENU MOBILE */
+document
+  .getElementById("menuBtn")
+  .addEventListener("click",()=>{
+
+    document
+      .getElementById("nav")
+      .classList.toggle("open");
+
+  });
+
+
+/* FERMER MENU APRES CLIC */
+document.querySelectorAll("nav a").forEach(link=>{
+
+  link.addEventListener("click",()=>{
+
+    document
+      .getElementById("nav")
+      .classList.remove("open");
+
+  });
+
+});
+
+
+/* LANCEMENT */
+chargerAnime();
 
 </script>
 
 </body>
-</html>
+  </html>
