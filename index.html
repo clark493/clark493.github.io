@@ -3,1567 +3,868 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>RABESAIKY ANIME</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-}
-
-:root{
-    --bg:#08070d;
-    --bg2:#100c1c;
-    --card:#171522;
-    --pink:#ff2f8a;
-    --pink2:#ff4c9c;
-    --white:#fff;
-    --gray:#aaa7b3;
-    --border:#252231;
-}
-
-html{
-    scroll-behavior:smooth;
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 body{
-    background:var(--bg);
-    color:white;
-    font-family:Arial,Helvetica,sans-serif;
+  background:#08070d;
+  color:#fff;
+  font-family:Arial,sans-serif;
+  padding-bottom:75px;
 }
-
-/* ================= HEADER ================= */
 
 header{
-    height:70px;
-    background:#100d17;
-    border-bottom:1px solid #292332;
-    position:sticky;
-    top:0;
-    z-index:1000;
-}
-
-.header{
-    height:100%;
-    max-width:1250px;
-    margin:auto;
-    padding:0 25px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
+  height:70px;
+  background:#100d17;
+  border-bottom:1px solid #272230;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 30px;
+  position:sticky;
+  top:0;
+  z-index:100;
 }
 
 .logo{
-    color:var(--pink);
-    font-size:27px;
-    font-weight:900;
-    text-decoration:none;
-    letter-spacing:.3px;
+  color:#ff2f8a;
+  font-size:27px;
+  font-weight:900;
 }
 
-.menu{
-    display:flex;
-    gap:30px;
+nav{
+  display:flex;
+  gap:30px;
 }
 
-.menu button{
-    background:none;
-    border:0;
-    color:white;
-    font-size:17px;
-    font-weight:bold;
-    cursor:pointer;
+nav button{
+  background:none;
+  border:0;
+  color:#fff;
+  font-size:17px;
+  font-weight:bold;
 }
-
-.menu button:hover{
-    color:var(--pink);
-}
-
-/* ================= HERO ================= */
 
 .hero{
-    min-height:480px;
-    padding:65px 25px 70px;
-
-    background:
-        radial-gradient(
-            circle at 50% 0%,
-            rgba(117,32,151,.48),
-            transparent 55%
-        ),
-        linear-gradient(
-            #130c1e,
-            #0c0913
-        );
-
-    text-align:center;
+  text-align:center;
+  padding:55px 20px 70px;
+  background:
+    radial-gradient(circle at center top,#35164c,#100b18 55%,#08070d);
 }
 
 .hero h1{
-    max-width:800px;
-    margin:auto;
-
-    font-size:52px;
-    line-height:1.15;
-    font-weight:900;
+  font-size:45px;
+  line-height:1.2;
 }
 
 .hero h1 span{
-    color:var(--pink);
+  color:#ff2f8a;
 }
 
 .hero p{
-    margin:28px auto;
-    color:#bbb7c2;
-    font-size:20px;
+  color:#bdb8c5;
+  font-size:19px;
+  margin:20px 0 28px;
 }
 
 .search{
-    max-width:580px;
-    height:62px;
-    margin:35px auto 0;
-
-    background:white;
-    border-radius:40px;
-
-    display:flex;
-    align-items:center;
-
-    padding:0 20px;
+  max-width:580px;
+  height:62px;
+  margin:auto;
+  background:#fff;
+  border-radius:40px;
+  display:flex;
+  align-items:center;
+  padding:0 20px;
 }
 
 .search span{
-    font-size:25px;
-    margin-right:8px;
+  font-size:25px;
 }
 
 .search input{
-    width:100%;
-    height:100%;
-
-    border:0;
-    outline:0;
-
-    background:transparent;
-
-    font-size:17px;
-    color:#222;
+  width:100%;
+  height:100%;
+  border:0;
+  outline:0;
+  font-size:17px;
+  padding-left:10px;
+  color:#222;
 }
-
-.search input::placeholder{
-    color:#8c8c8c;
-}
-
-/* ================= MAIN ================= */
 
 main{
-    max-width:1250px;
-    margin:auto;
-    padding:45px 25px 80px;
+  max-width:1200px;
+  margin:auto;
+  padding:45px 25px;
 }
 
 .section{
-    margin-bottom:55px;
+  margin-bottom:55px;
 }
 
-.section-title{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-bottom:25px;
+.section h2{
+  font-size:30px;
+  margin-bottom:25px;
 }
 
-.section-title h2{
-    font-size:30px;
+.section h2 span{
+  color:#ff2f8a;
 }
 
-.section-title span{
-    color:var(--pink);
+.grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:20px;
 }
 
-/* ================= GRID ================= */
-
-.anime-grid{
-    display:grid;
-
-    grid-template-columns:
-        repeat(5,1fr);
-
-    gap:24px;
+.card{
+  background:#171522;
+  border:1px solid #292532;
+  border-radius:16px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:.2s;
 }
 
-/* ================= CARD ================= */
-
-.anime-card{
-    background:var(--card);
-    border:1px solid var(--border);
-
-    border-radius:16px;
-
-    overflow:hidden;
-
-    cursor:pointer;
-
-    transition:
-        transform .2s,
-        border-color .2s;
-}
-
-.anime-card:hover{
-    transform:translateY(-7px);
-    border-color:#4c4558;
+.card:hover{
+  transform:translateY(-5px);
+  border-color:#ff2f8a;
 }
 
 .poster{
-    width:100%;
-    aspect-ratio:2 / 3;
-
-    background:
-        linear-gradient(
-            135deg,
-            #332341,
-            #111
-        );
-
-    overflow:hidden;
+  width:100%;
+  aspect-ratio:2/3;
+  background:#21192a;
+  overflow:hidden;
 }
 
 .poster img{
-    width:100%;
-    height:100%;
-
-    display:block;
-
-    object-fit:cover;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
 }
 
 .info{
-    padding:16px;
+  padding:15px;
 }
 
 .title{
-    font-size:17px;
-    font-weight:bold;
-
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-
-    margin-bottom:12px;
+  font-size:17px;
+  font-weight:bold;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
 }
 
 .rating{
-    color:#ffd51c;
-    font-size:17px;
-    margin-bottom:9px;
+  color:#ffd21c;
+  margin-top:11px;
+  font-size:16px;
 }
 
 .type{
-    color:#999;
-    font-size:14px;
+  color:#999;
+  margin-top:8px;
 }
 
-/* ================= SEARCH RESULTS ================= */
-
-#searchPage{
-    display:none;
+.sns{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
 }
 
-.search-title{
-    font-size:28px;
-    margin-bottom:25px;
+.sns div{
+  background:#171522;
+  border:1px solid #292532;
+  border-radius:15px;
+  padding:25px;
+  text-align:center;
 }
 
-.no-result{
-    color:#888;
-    font-size:17px;
+.sns strong{
+  display:block;
+  font-size:18px;
+  margin-bottom:8px;
 }
 
-/* ================= MODAL ================= */
+.sns small{
+  color:#999;
+}
+
+footer{
+  text-align:center;
+  color:#777;
+  border-top:1px solid #24202c;
+  padding:30px;
+}
+
+footer b{
+  color:#ff2f8a;
+}
+
+/* MODAL */
 
 .modal{
-    position:fixed;
-    inset:0;
-
-    background:rgba(0,0,0,.85);
-
-    z-index:3000;
-
-    display:none;
-    align-items:center;
-    justify-content:center;
-
-    padding:20px;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.85);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  z-index:500;
 }
 
-.modal.active{
-    display:flex;
+.modal.show{
+  display:flex;
 }
 
-.modal-box{
-    width:100%;
-    max-width:850px;
-    max-height:90vh;
-
-    overflow:auto;
-
-    background:#15121e;
-
-    border:1px solid #30293a;
-
-    border-radius:18px;
+.box{
+  width:100%;
+  max-width:800px;
+  max-height:90vh;
+  overflow:auto;
+  background:#15121e;
+  border-radius:18px;
+  border:1px solid #30293a;
 }
 
-.modal-header{
-    padding:18px 20px;
-
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-
-    border-bottom:1px solid #292331;
-}
-
-.modal-header h3{
-    color:var(--pink);
+.top{
+  padding:18px 20px;
+  border-bottom:1px solid #292331;
+  display:flex;
+  justify-content:space-between;
 }
 
 .close{
-    width:38px;
-    height:38px;
-
-    border:0;
-    border-radius:50%;
-
-    background:#282431;
-    color:white;
-
-    font-size:23px;
-
-    cursor:pointer;
-}
-
-.modal-body{
-    padding:22px;
+  background:#292430;
+  color:white;
+  border:0;
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  font-size:22px;
 }
 
 .detail{
-    display:flex;
-    gap:25px;
+  padding:22px;
+  display:flex;
+  gap:20px;
 }
 
-.detail-poster{
-    width:190px;
-    height:285px;
-
-    object-fit:cover;
-
-    border-radius:12px;
+.detail img{
+  width:170px;
+  height:255px;
+  object-fit:cover;
+  border-radius:12px;
 }
 
-.detail-info{
-    flex:1;
+.detail h2{
+  font-size:28px;
+  margin-bottom:12px;
 }
 
-.detail-info h2{
-    font-size:30px;
-    margin-bottom:14px;
-}
-
-.detail-rating{
-    color:#ffd51c;
-    font-size:18px;
-    margin-bottom:14px;
-}
-
-.detail-description{
-    color:#aaa;
-    line-height:1.7;
+.desc{
+  color:#aaa;
+  line-height:1.6;
 }
 
 .episodes{
-    margin-top:30px;
+  padding:0 22px 25px;
 }
 
 .episodes h3{
-    margin-bottom:15px;
+  margin-bottom:15px;
 }
 
-.episode-list{
-    display:flex;
-    flex-wrap:wrap;
-    gap:9px;
+.ep{
+  background:#292431;
+  color:#fff;
+  border:0;
+  padding:10px 13px;
+  margin:4px;
+  border-radius:7px;
 }
 
-.episode{
-    background:#24202e;
-    border:1px solid #36303f;
-    color:white;
-
-    padding:10px 14px;
-
-    border-radius:8px;
-
-    cursor:pointer;
+.ep:hover{
+  background:#ff2f8a;
 }
 
-.episode:hover{
-    background:var(--pink);
-    border-color:var(--pink);
-}
+/* MOBILE */
 
-/* ================= VIDEO ================= */
-
-.video-container{
-    margin-top:25px;
-    display:none;
-}
-
-.video-container video{
-    width:100%;
-    border-radius:12px;
-    background:black;
-}
-
-/* ================= SNS ================= */
-
-.sns{
-    display:grid;
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap:18px;
-}
-
-.sns-card{
-    padding:25px;
-
-    border-radius:14px;
-
-    background:var(--card);
-    border:1px solid var(--border);
-
-    text-decoration:none;
-    color:white;
-
-    text-align:center;
-}
-
-.sns-card:hover{
-    border-color:var(--pink);
-}
-
-.sns-card strong{
-    display:block;
-    font-size:18px;
-    margin-bottom:8px;
-}
-
-.sns-card span{
-    color:#888;
-    font-size:13px;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-    border-top:1px solid #24202c;
-
-    padding:35px 20px;
-
-    text-align:center;
-
-    color:#777;
-}
-
-footer strong{
-    color:var(--pink);
-}
-
-/* ================= MOBILE NAV ================= */
-
-.mobile-nav{
-    display:none;
-}
-
-/* ================= RESPONSIVE ================= */
-
-@media(max-width:1000px){
-
-    .anime-grid{
-        grid-template-columns:
-            repeat(4,1fr);
-    }
-
-    .sns{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
+.mobile{
+  display:none;
 }
 
 @media(max-width:700px){
 
-    header{
-        height:62px;
-    }
+  header{
+    padding:0 18px;
+  }
 
-    .header{
-        padding:0 18px;
-    }
+  .logo{
+    font-size:22px;
+  }
 
-    .logo{
-        font-size:22px;
-    }
+  nav{
+    gap:18px;
+  }
 
-    .menu{
-        gap:18px;
-    }
+  nav button{
+    font-size:15px;
+  }
 
-    .menu button{
-        font-size:15px;
-    }
+  .hero{
+    padding:45px 18px 55px;
+  }
 
-    .hero{
-        min-height:420px;
-        padding:55px 20px;
-    }
+  .hero h1{
+    font-size:35px;
+  }
 
-    .hero h1{
-        font-size:37px;
-    }
+  .hero p{
+    font-size:17px;
+  }
 
-    .hero p{
-        font-size:17px;
-    }
+  main{
+    padding:35px 15px;
+  }
 
-    .search{
-        height:58px;
-    }
+  .grid{
+    grid-template-columns:repeat(2,1fr);
+    gap:14px;
+  }
 
-    main{
-        padding:35px 15px 90px;
-    }
+  .section h2{
+    font-size:28px;
+  }
 
-    .section-title h2{
-        font-size:25px;
-    }
+  .info{
+    padding:13px;
+  }
 
-    .anime-grid{
-        grid-template-columns:
-            repeat(2,1fr);
+  .title{
+    font-size:15px;
+  }
 
-        gap:14px;
-    }
+  .sns{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-    .info{
-        padding:13px;
-    }
+  .detail{
+    flex-direction:column;
+  }
 
-    .title{
-        font-size:15px;
-    }
+  .detail img{
+    width:145px;
+    height:215px;
+  }
 
-    .rating{
-        font-size:15px;
-    }
+  .mobile{
+    position:fixed;
+    bottom:0;
+    left:0;
+    right:0;
+    height:68px;
+    background:#12101a;
+    border-top:1px solid #292431;
+    display:flex;
+    z-index:200;
+  }
 
-    .detail{
-        flex-direction:column;
-    }
+  .mobile button{
+    flex:1;
+    background:none;
+    border:0;
+    color:#999;
+    font-size:12px;
+  }
 
-    .detail-poster{
-        width:145px;
-        height:215px;
-    }
-
-    .sns{
-        grid-template-columns:
-            repeat(2,1fr);
-    }
-
-    .mobile-nav{
-        position:fixed;
-        display:flex;
-
-        bottom:0;
-        left:0;
-        right:0;
-
-        height:65px;
-
-        background:#12101a;
-
-        border-top:1px solid #2a2531;
-
-        z-index:2000;
-    }
-
-    .mobile-nav button{
-        flex:1;
-
-        border:0;
-        background:none;
-
-        color:#aaa;
-
-        font-size:11px;
-
-        cursor:pointer;
-    }
-
-    .mobile-nav button:first-child{
-        color:var(--pink);
-    }
-}
-
-@media(max-width:400px){
-
-    .logo{
-        font-size:19px;
-    }
-
-    .menu{
-        gap:10px;
-    }
-
-    .menu button{
-        font-size:13px;
-    }
-
-    .hero h1{
-        font-size:31px;
-    }
-
-    .anime-grid{
-        gap:10px;
-    }
+  .mobile button:first-child{
+    color:#ff2f8a;
+  }
 }
 </style>
 </head>
 
-
 <body>
 
-
-<!-- ================= HEADER ================= -->
-
 <header>
+  <div class="logo">RABESAIKY ANIME</div>
 
-<div class="header">
-
-<a href="#" class="logo" onclick="home();return false;">
-RABESAIKY ANIME
-</a>
-
-<nav class="menu">
-
-<button onclick="home()">
-Accueil
-</button>
-
-<button onclick="animePage()">
-Anime
-</button>
-
-</nav>
-
-</div>
-
+  <nav>
+    <button onclick="goHome()">Accueil</button>
+    <button onclick="goAnime()">Anime</button>
+  </nav>
 </header>
 
+<section class="hero">
 
+  <h1>
+    Bienvenue sur <span>Anime<br>Manga</span>
+  </h1>
 
-<!-- ================= ACCUEIL ================= -->
+  <p>
+    Découvrez vos anime et manga préférés.
+  </p>
 
-<section id="homePage">
+  <div class="search">
+    <span>🔎</span>
+    <input
+      id="search"
+      type="text"
+      placeholder="Rechercher un anime ou manga..."
+      oninput="searchAnime()"
+    >
+  </div>
 
-<div class="hero">
-
-<h1>
-Bienvenue sur
-<span>RABESAIKY ANIME</span>
-</h1>
-
-<p>
-Découvrez vos anime et manga préférés.
-</p>
-
-
-<div class="search">
-
-<span>🔎</span>
-
-<input
-id="searchInput"
-type="text"
-placeholder="Rechercher un anime ou manga..."
-oninput="searchAnime()"
->
-
-</div>
-
-</div>
-
-
+</section>
 
 <main>
 
+  <section class="section">
 
-<!-- POPULAIRES -->
+    <h2>
+      🔥 Anime <span>populaires</span>
+    </h2>
 
-<section class="section">
+    <div class="grid" id="popular"></div>
 
-<div class="section-title">
-
-<h2>
-🔥 Anime
-<span>populaires</span>
-</h2>
-
-</div>
+  </section>
 
 
-<div
-class="anime-grid"
-id="popularGrid"
-></div>
+  <section class="section">
 
-</section>
+    <h2>
+      ✨ Anime <span>récents</span>
+    </h2>
 
+    <div class="grid" id="recent"></div>
 
-
-<!-- NOUVEAUTÉS -->
-
-<section class="section">
-
-<div class="section-title">
-
-<h2>
-✨ Anime
-<span>récents</span>
-</h2>
-
-</div>
+  </section>
 
 
-<div
-class="anime-grid"
-id="recentGrid"
-></div>
+  <section class="section">
 
-</section>
+    <h2>
+      📱 <span>SNS</span>
+    </h2>
 
+    <div class="sns">
 
+      <div>
+        <strong>Telegram</strong>
+        <small>RABESAIKY ANIME</small>
+      </div>
 
-<!-- SNS -->
+      <div>
+        <strong>TikTok</strong>
+        <small>Nos nouveautés</small>
+      </div>
 
-<section class="section">
+      <div>
+        <strong>Facebook</strong>
+        <small>Notre communauté</small>
+      </div>
 
-<div class="section-title">
+      <div>
+        <strong>Instagram</strong>
+        <small>RABESAIKY ANIME</small>
+      </div>
 
-<h2>
-📱 <span>SNS</span>
-</h2>
+    </div>
 
-</div>
-
-
-<div class="sns">
-
-<a
-class="sns-card"
-href="#"
-onclick="return false"
->
-
-<strong>Telegram</strong>
-
-<span>
-RABESAIKY ANIME
-</span>
-
-</a>
-
-
-<a
-class="sns-card"
-href="#"
-onclick="return false"
->
-
-<strong>TikTok</strong>
-
-<span>
-Nos nouveautés
-</span>
-
-</a>
-
-
-<a
-class="sns-card"
-href="#"
-onclick="return false"
->
-
-<strong>Facebook</strong>
-
-<span>
-Notre communauté
-</span>
-
-</a>
-
-
-<a
-class="sns-card"
-href="#"
-onclick="return false"
->
-
-<strong>Instagram</strong>
-
-<span>
-RABESAIKY ANIME
-</span>
-
-</a>
-
-</div>
-
-</section>
-
+  </section>
 
 </main>
-
-</section>
-
-
-
-<!-- ================= RECHERCHE ================= -->
-
-<section id="searchPage">
-
-<main>
-
-<h2 class="search-title">
-🔎 Résultats de recherche
-</h2>
-
-<div
-class="anime-grid"
-id="searchGrid"
-></div>
-
-</main>
-
-</section>
-
-
-
-<!-- ================= ANIME PAGE ================= -->
-
-<section id="animePage" style="display:none">
-
-<main>
-
-<div class="section-title">
-
-<h2>
-📺 Tous les <span>Anime</span>
-</h2>
-
-</div>
-
-
-<div
-class="anime-grid"
-id="allAnimeGrid"
-></div>
-
-</main>
-
-</section>
-
-
-
-<!-- ================= MODAL ================= -->
-
-<div
-class="modal"
-id="modal"
-onclick="outsideModal(event)"
->
-
-<div class="modal-box">
-
-<div class="modal-header">
-
-<h3>
-RABESAIKY ANIME
-</h3>
-
-<button
-class="close"
-onclick="closeModal()"
->
-×
-</button>
-
-</div>
-
-
-<div class="modal-body">
-
-<div class="detail">
-
-<img
-id="detailImage"
-class="detail-poster"
-src=""
-alt=""
->
-
-<div class="detail-info">
-
-<h2 id="detailTitle"></h2>
-
-<div
-id="detailRating"
-class="detail-rating"
-></div>
-
-<p
-id="detailDescription"
-class="detail-description"
-></p>
-
-</div>
-
-</div>
-
-
-<div class="episodes">
-
-<h3>
-📺 Épisodes
-</h3>
-
-<div
-id="episodeList"
-class="episode-list"
-></div>
-
-</div>
-
-
-<div
-id="videoContainer"
-class="video-container"
->
-
-<video
-id="video"
-controls
-></video>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-
-
-<!-- ================= MOBILE MENU ================= -->
-
-<div class="mobile-nav">
-
-<button onclick="home()">
-🏠<br>
-Accueil
-</button>
-
-<button onclick="animePage()">
-🎬<br>
-Anime
-</button>
-
-<button onclick="scrollSNS()">
-📱<br>
-SNS
-</button>
-
-<button onclick="focusSearch()">
-🔎<br>
-Recherche
-</button>
-
-</div>
-
-
-
-<!-- ================= FOOTER ================= -->
 
 <footer>
-
-<strong>RABESAIKY ANIME</strong>
-
-<br><br>
-
-© 2026 RABESAIKY ANIME
-
+  <b>RABESAIKY ANIME</b>
+  <br><br>
+  © 2026 RABESAIKY ANIME
 </footer>
 
+
+<!-- FICHE ANIME -->
+
+<div class="modal" id="modal">
+
+  <div class="box">
+
+    <div class="top">
+      <b>RABESAIKY ANIME</b>
+
+      <button class="close" onclick="closeAnime()">×</button>
+    </div>
+
+    <div class="detail">
+
+      <img id="detailImage">
+
+      <div>
+
+        <h2 id="detailTitle"></h2>
+
+        <div id="detailRating" class="rating"></div>
+
+        <p id="detailDesc" class="desc"></p>
+
+      </div>
+
+    </div>
+
+    <div class="episodes">
+
+      <h3>📺 Épisodes</h3>
+
+      <div id="episodes"></div>
+
+    </div>
+
+  </div>
+
+</div>
+
+
+<!-- MENU MOBILE -->
+
+<div class="mobile">
+
+  <button onclick="goHome()">
+    🏠<br>Accueil
+  </button>
+
+  <button onclick="goAnime()">
+    🎬<br>Anime
+  </button>
+
+  <button onclick="goSNS()">
+    📱<br>SNS
+  </button>
+
+  <button onclick="focusSearch()">
+    🔎<br>Recherche
+  </button>
+
+</div>
 
 
 <script>
 
-/* =====================================================
+/* ================================
    ANIMES
-===================================================== */
+================================ */
 
 const animes = [
 
 {
-title:"Sousou no Frieren",
-rating:"9.3",
-type:"TV",
-image:"images/frieren.jpg",
-description:
-"Après la fin d'une grande aventure, Frieren poursuit son voyage et découvre peu à peu les souvenirs et les liens laissés derrière elle.",
-episodes:28
+ title:"Sousou no Frieren",
+ rating:"9.3",
+ type:"TV",
+ image:"https://cdn.myanimelist.net/images/anime/1015/138006.jpg",
+ desc:"Après la fin d'une grande aventure, Frieren poursuit son voyage.",
+ episodes:28
 },
 
 {
-title:"Re:Zero kara Hajimeru Isekai Seikatsu",
-rating:"9.2",
-type:"TV",
-image:"images/rezero.jpg",
-description:
-"Subaru se retrouve dans un monde mystérieux où il doit comprendre son nouveau destin.",
-episodes:25
+ title:"Re:Zero kara Hajimeru Isekai Seikatsu",
+ rating:"9.2",
+ type:"TV",
+ image:"https://cdn.myanimelist.net/images/anime/1522/128039.jpg",
+ desc:"Subaru se retrouve dans un monde mystérieux.",
+ episodes:25
 },
 
 {
-title:"One Piece",
-rating:"9.0",
-type:"TV",
-image:"images/one-piece.jpg",
-description:
-"Luffy et son équipage parcourent les mers à la recherche du légendaire One Piece.",
-episodes:20
+ title:"One Piece",
+ rating:"9.0",
+ type:"TV",
+ image:"https://cdn.myanimelist.net/images/anime/1244/138851.jpg",
+ desc:"Luffy et son équipage parcourent les mers.",
+ episodes:20
 },
 
 {
-title:"Demon Slayer",
-rating:"8.9",
-type:"TV",
-image:"images/demon-slayer.jpg",
-description:
-"Tanjiro commence une aventure afin de protéger sa famille et combattre les démons.",
-episodes:26
+ title:"Demon Slayer",
+ rating:"8.9",
+ type:"TV",
+ image:"https://cdn.myanimelist.net/images/anime/1286/99889.jpg",
+ desc:"Tanjiro commence une aventure contre les démons.",
+ episodes:26
 },
 
 {
-title:"Jujutsu Kaisen",
-rating:"8.8",
-type:"TV",
-image:"images/jujutsu.jpg",
-description:
-"Yuji rejoint les exorcistes et découvre le monde dangereux des malédictions.",
-episodes:24
+ title:"Jujutsu Kaisen",
+ rating:"8.8",
+ type:"TV",
+ image:"https://cdn.myanimelist.net/images/anime/1171/109222.jpg",
+ desc:"Yuji découvre le monde dangereux des malédictions.",
+ episodes:24
 },
 
 {
-title:"Naruto",
-rating:"8.7",
-type:"TV",
-image:"images/naruto.jpg",
-description:
-"Naruto rêve de devenir le plus grand ninja de son village.",
-episodes:220
+ title:"Naruto",
+ rating:"8.7",
+ type:"TV",
+ image:"https://cdn.myanimelist.net/images/anime/13/17405.jpg",
+ desc:"Naruto rêve de devenir le plus grand ninja.",
+ episodes:220
 },
 
 {
-const animes = [
-
-{
-    title:"Sousou no Frieren",
-    rating:"9.3",
-    type:"TV",
-    image:"",
-    search:"Sousou no Frieren",
-    description:"Après la fin d'une grande aventure, Frieren poursuit son voyage.",
-    episodes:28
+ title:"Solo Leveling",
+ rating:"8.8",
+ type:"TV",
+ image:"https://cdn.myanimelist.net/images/anime/1702/139407.jpg",
+ desc:"Sung Jin-Woo devient progressivement plus puissant.",
+ episodes:12
 },
 
 {
-    title:"Re:Zero kara Hajimeru Isekai Seikatsu",
-    rating:"9.2",
-    type:"TV",
-    image:"",
-    search:"Re:Zero kara Hajimeru Isekai Seikatsu",
-    description:"Subaru se retrouve dans un monde mystérieux.",
-    episodes:25
+ title:"Dragon Ball",
+ rating:"8.7",
+ type:"TV",
+ image:"https://cdn.myanimelist.net/images/anime/6/140675.jpg",
+ desc:"Goku et ses amis vivent de grandes aventures.",
+ episodes:153
 },
 
 {
-    title:"One Piece",
-    rating:"9.0",
-    type:"TV",
-    image:"",
-    search:"One Piece",
-    description:"Luffy et son équipage parcourent les mers.",
-    episodes:20
+ title:"My Hero Academia",
+ rating:"8.6",
+ type:"TV",
+ image:"https://cdn.myanimelist.net/images/anime/10/78745.jpg",
+ desc:"Izuku rêve de devenir un héros.",
+ episodes:13
 },
 
 {
-    title:"Demon Slayer",
-    rating:"8.9",
-    type:"TV",
-    image:"",
-    search:"Kimetsu no Yaiba",
-    description:"Tanjiro commence une aventure contre les démons.",
-    episodes:26
-},
-
-{
-    title:"Jujutsu Kaisen",
-    rating:"8.8",
-    type:"TV",
-    image:"",
-    search:"Jujutsu Kaisen",
-    description:"Yuji découvre le monde dangereux des malédictions.",
-    episodes:24
-},
-
-{
-    title:"Naruto",
-    rating:"8.7",
-    type:"TV",
-    image:"",
-    search:"Naruto",
-    description:"Naruto rêve de devenir le plus grand ninja.",
-    episodes:220
-},
-
-{
-    title:"Solo Leveling",
-    rating:"8.8",
-    type:"TV",
-    image:"",
-    search:"Solo Leveling",
-    description:"Sung Jin-Woo devient progressivement plus puissant.",
-    episodes:12
-},
-
-{
-    title:"Dragon Ball",
-    rating:"8.7",
-    type:"TV",
-    image:"",
-    search:"Dragon Ball",
-    description:"Goku et ses amis vivent de grandes aventures.",
-    episodes:153
-},
-
-{
-    title:"My Hero Academia",
-    rating:"8.6",
-    type:"TV",
-    image:"",
-    search:"Boku no Hero Academia",
-    description:"Izuku rêve de devenir un héros.",
-    episodes:13
-},
-
-{
-    title:"Spy x Family",
-    rating:"8.5",
-    type:"TV",
-    image:"",
-    search:"Spy x Family",
-    description:"Une famille créée pour une mission secrète.",
-    episodes:25
+ title:"Spy x Family",
+ rating:"8.5",
+ type:"TV",
+ image:"https://cdn.myanimelist.net/images/anime/1441/122795.jpg",
+ desc:"Une famille créée pour une mission secrète.",
+ episodes:25
 }
 
 ];
 
 
-/* =====================================================
-   CRÉER UNE CARTE
-===================================================== */
+/* ================================
+   CARTE
+================================ */
 
-function createCard(anime){
+function card(anime){
 
-return `
+  return `
+    <div class="card" onclick='openAnime(${JSON.stringify(anime)})'>
 
-<div
-class="anime-card"
-onclick='openAnime(${JSON.stringify(anime)})'
->
+      <div class="poster">
 
-<div class="poster">
+        <img
+          src="${anime.image}"
+          alt="${anime.title}"
+          onerror="this.style.display='none'"
+        >
 
-<img
-src="${anime.image}"
-alt="${anime.title}"
-onerror="this.src='photo.jpg'"
->
+      </div>
 
-</div>
+      <div class="info">
+
+        <div class="title">
+          ${anime.title}
+        </div>
+
+        <div class="rating">
+          ⭐ ${anime.rating}
+        </div>
+
+        <div class="type">
+          ${anime.type}
+        </div>
+
+      </div>
+
+    </div>
+  `;
+}
 
 
-<div class="info">
+/* ================================
+   AFFICHER
+================================ */
 
-<div class="title">
-${anime.title}
-</div>
+function render(){
 
-<div class="rating">
-⭐ ${anime.rating}
-</div>
+  document.getElementById("popular").innerHTML =
+    animes.slice(0,6).map(card).join("");
 
-<div class="type">
-${anime.type}
-</div>
-
-</div>
-
-</div>
-
-`;
+  document.getElementById("recent").innerHTML =
+    animes.slice(4,10).map(card).join("");
 
 }
 
 
-/* =====================================================
-   AFFICHAGE
-===================================================== */
-
-function renderHome(){
-
-document.getElementById("popularGrid")
-.innerHTML =
-animes
-.slice(0,6)
-.map(createCard)
-.join("");
-
-
-document.getElementById("recentGrid")
-.innerHTML =
-animes
-.slice(4,10)
-.map(createCard)
-.join("");
-
-}
-
-
-function renderAnime(){
-
-document.getElementById("allAnimeGrid")
-.innerHTML =
-animes
-.map(createCard)
-.join("");
-
-}
-
-
-/* =====================================================
-   PAGES
-===================================================== */
-
-function hidePages(){
-
-document.getElementById("homePage")
-.style.display="none";
-
-document.getElementById("searchPage")
-.style.display="none";
-
-document.getElementById("animePage")
-.style.display="none";
-
-}
-
-
-function home(){
-
-hidePages();
-
-document.getElementById("homePage")
-.style.display="block";
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-
-function animePage(){
-
-hidePages();
-
-document.getElementById("animePage")
-.style.display="block";
-
-renderAnime();
-
-window.scrollTo({
-top:0,
-behavior:"smooth"
-});
-
-}
-
-
-/* =====================================================
+/* ================================
    RECHERCHE
-===================================================== */
+================================ */
 
 function searchAnime(){
 
-const value =
-document
-.getElementById("searchInput")
-.value
-.toLowerCase()
-.trim();
+  const text =
+    document.getElementById("search")
+    .value
+    .toLowerCase();
 
+  if(!text){
 
-if(value===""){
+    render();
+    return;
 
-home();
+  }
 
-return;
+  const result =
+    animes.filter(a =>
+      a.title.toLowerCase().includes(text)
+    );
 
-}
+  document.getElementById("popular").innerHTML =
+    result.map(card).join("");
 
-
-hidePages();
-
-document.getElementById("searchPage")
-.style.display="block";
-
-
-const results =
-animes.filter(anime =>
-
-anime.title
-.toLowerCase()
-.includes(value)
-
-);
-
-
-document.getElementById("searchGrid")
-.innerHTML =
-results.length
-
-?
-
-results
-.map(createCard)
-.join("")
-
-:
-
-`
-<p class="no-result">
-Aucun anime trouvé pour « ${value} ».
-</p>
-`;
+  document.getElementById("recent").innerHTML = "";
 
 }
 
 
-/* =====================================================
-   MODAL
-===================================================== */
+/* ================================
+   FICHE
+================================ */
 
 function openAnime(anime){
 
-document
-.getElementById("modal")
-.classList
-.add("active");
+  document.getElementById("modal")
+    .classList.add("show");
+
+  document.getElementById("detailImage")
+    .src = anime.image;
+
+  document.getElementById("detailTitle")
+    .textContent = anime.title;
+
+  document.getElementById("detailRating")
+    .textContent =
+      "⭐ " + anime.rating + " • " + anime.type;
+
+  document.getElementById("detailDesc")
+    .textContent = anime.desc;
 
 
-document
-.getElementById("detailImage")
-.src=anime.image;
+  let html="";
 
+  for(let i=1;i<=anime.episodes;i++){
 
-document
-.getElementById("detailTitle")
-.textContent=anime.title;
+    html += `
+      <button
+        class="ep"
+        onclick="episode(${i})"
+      >
+        Épisode ${i}
+      </button>
+    `;
 
+  }
 
-document
-.getElementById("detailRating")
-textContent=
-"⭐ "+anime.rating+
-" • "+anime.type;
-
-
-document
-.getElementById("detailDescription")
-.textContent=anime.description;
-
-
-/* Épisodes */
-
-const list =
-document.getElementById("episodeList");
-
-list.innerHTML="";
-
-
-for(let i=1;i<=anime.episodes;i++){
-
-const button =
-document.createElement("button");
-
-button.className="episode";
-
-button.textContent=
-"Épisode "+i;
-
-button.onclick=function(){
-
-playEpisode(i);
-
-};
-
-list.appendChild(button);
-
-}
+  document.getElementById("episodes")
+    .innerHTML = html;
 
 }
 
 
-function playEpisode(number){
+function closeAnime(){
 
-const container =
-document.getElementById("videoContainer");
-
-const video =
-document.getElementById("video");
-
-
-container.style.display="block";
-
-
-/*
-   Place tes vidéos ici :
-
-   videos/episode1.mp4
-   videos/episode2.mp4
-   videos/episode3.mp4
-*/
-
-video.src=
-"videos/episode"+number+".mp4";
-
-video.load();
-
-video.play().catch(()=>{});
+  document.getElementById("modal")
+    .classList.remove("show");
 
 }
 
 
-/* =====================================================
-   FERMER
-===================================================== */
+function episode(number){
 
-function closeModal(){
-
-document
-.getElementById("modal")
-.classList
-.remove("active");
-
-
-const video =
-document.getElementById("video");
-
-video.pause();
+  alert(
+    "Épisode " + number +
+    " : ajoute ta vidéo dans ton site pour la lire ici."
+  );
 
 }
 
 
-function outsideModal(event){
+/* ================================
+   NAVIGATION
+================================ */
 
-if(event.target.id==="modal"){
+function goHome(){
 
-closeModal();
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
 }
 
+
+function goAnime(){
+
+  document.querySelector(".section")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
 }
 
 
-/* =====================================================
-   MOBILE
-===================================================== */
+function goSNS(){
+
+  const sections =
+    document.querySelectorAll(".section");
+
+  sections[2].scrollIntoView({
+    behavior:"smooth"
+  });
+
+}
+
 
 function focusSearch(){
 
-home();
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
 
-setTimeout(()=>{
+  setTimeout(()=>{
 
-document
-.getElementById("searchInput")
-.focus();
+    document.getElementById("search")
+      .focus();
 
-},300);
-
-}
-
-
-function scrollSNS(){
-
-home();
-
-setTimeout(()=>{
-
-const elements =
-document.querySelectorAll(".section");
-
-if(elements.length){
-
-elements[
-elements.length-1
-].scrollIntoView({
-behavior:"smooth"
-});
-
-}
-
-},200);
+  },400);
 
 }
 
 
-/* =====================================================
-   START
-===================================================== */
+/* ================================
+   DÉMARRAGE
+================================ */
 
-loadPosters();
+render();
 
 </script>
 
 </body>
-    </html>
+</html>
