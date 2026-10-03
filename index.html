@@ -526,8 +526,30 @@ const animes = [
   type:"TV",
   image:"https://cdn.myanimelist.net/images/anime/1441/122795.jpg",
   desc:"Une famille pas comme les autres tente de cacher ses véritables secrets."
-}
+},
+{
+  title:"Kaiju No. 8",
+  rating:"8.3",
+  type:"TV",
+  image:"https://cdn.myanimelist.net/images/anime/1000/141005.jpg",
+  desc:"Kafka Hibino rêve de rejoindre les forces de défense et se retrouve lié à un mystérieux kaiju."
+},
 
+{
+  title:"Ajin",
+  rating:"7.8",
+  type:"TV",
+  image:"https://cdn.myanimelist.net/images/anime/1528/112242.jpg",
+  desc:"Kei découvre qu'il est un Ajin et doit fuir alors que ses pouvoirs sont recherchés."
+},
+
+{
+  title:"To Be Hero X",
+  rating:"8.0",
+  type:"TV",
+  image:"https://cdn.myanimelist.net/images/anime/1155/148338.jpg",
+  desc:"Dans un monde où la confiance du public détermine les pouvoirs des héros."
+},
 ];
 
 function createCard(anime){
@@ -578,7 +600,7 @@ function render(list=animes){
     popular.appendChild(createCard(anime));
   });
 
-  list.slice(5,10).forEach(anime=>{
+  list.slice(5).forEach(anime=>{
     recent.appendChild(createCard(anime));
   });
 }
