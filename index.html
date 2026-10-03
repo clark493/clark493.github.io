@@ -570,7 +570,7 @@ function createCard(anime){
         <span class="rating">⭐ ${anime.rating}</span>
         <span>${anime.type}</span>
       </div>
-    </div>
+   <button class="episodes-btn">Saisons / Épisodes</button> </div>
   `;
 
   const img=card.querySelector("img");
@@ -647,8 +647,12 @@ function openAnime(anime){
   document.getElementById("modalInfo").textContent=
     "⭐ Note : "+anime.rating+"   •   📺 "+anime.type;
 
-  document.getElementById("modalDesc").textContent=
-    anime.desc;
+  document.getElementById("modalDesc").innerHTML =
+anime.desc +
+"<br><br><strong>📺 Saison 1</strong><br>" +
+"<button>Épisode 1</button> " +
+"<button>Épisode 2</button> " +
+"<button>Épisode 3</button>";
 
   document.getElementById("modal").classList.add("show");
 }
