@@ -33,9 +33,19 @@ header{
 }
 
 .logo{
-  color:#ff2f8a;
-  font-size:27px;
-  font-weight:900;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:#ff2f8a;
+    font-size:27px;
+    font-weight:900;
+}
+
+.logo img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    object-fit:cover;
 }
 
 nav{
@@ -397,8 +407,10 @@ footer b{
 <body>
 
 <header>
-  <div class="logo">RABESAIKY ANIME</div>
-
+  <div class="logo">
+  <img src="https://clark493.github.io/profil.jpg" alt="Profil">
+  <span>RABESAIKY ANIME</span>
+  </div>
   <nav>
     <button onclick="goHome()">Accueil</button>
     <button onclick="goAnime()">Anime</button>
