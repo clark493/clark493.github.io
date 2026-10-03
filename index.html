@@ -3,120 +3,256 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anime Manga</title>
+
+<title>AnimeZone</title>
 
 <style>
-*{box-sizing:border-box;margin:0;padding:0}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
 body{
-  font-family:Arial,sans-serif;
-  background:#08080f;
+  font-family:Arial, sans-serif;
+  background:#090811;
   color:white;
 }
+
+/* NAVBAR */
 header{
-  background:#11101c;
-  padding:18px 6%;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
   position:sticky;
   top:0;
-  z-index:10;
-  border-bottom:1px solid #292438;
+  z-index:100;
+  background:#100d1c;
+  border-bottom:1px solid #282035;
 }
+
+.nav{
+  max-width:1200px;
+  margin:auto;
+  padding:18px 25px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
 .logo{
-  color:#ff3d81;
-  font-size:25px;
+  font-size:28px;
   font-weight:900;
+  color:#ff2f92;
 }
+
 nav a{
   color:white;
   text-decoration:none;
   margin-left:25px;
   font-weight:bold;
 }
-.hero{
-  text-align:center;
-  padding:80px 20px;
-  background:
-  radial-gradient(circle at top,#422052,#100d1c 60%);
+
+nav a:hover{
+  color:#ff2f92;
 }
-.hero h1{font-size:48px;margin-bottom:15px}
-.hero h1 span{color:#ff3d81}
-.hero p{color:#bbb;font-size:18px;margin-bottom:30px}
+
+/* HERO */
+.hero{
+  min-height:420px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:50px 20px;
+  background:
+    radial-gradient(circle at 50% 20%,#54206d,#160e25 45%,#090811 80%);
+}
+
+.hero h1{
+  font-size:55px;
+  line-height:1.1;
+  margin-bottom:20px;
+}
+
+.pink{
+  color:#ff2f92;
+}
+
+.hero p{
+  color:#bbb7c5;
+  font-size:19px;
+  margin-bottom:30px;
+}
+
 .search{
-  width:90%;
-  max-width:650px;
+  width:100%;
+  max-width:600px;
   padding:18px 25px;
   border:none;
-  border-radius:40px;
-  font-size:16px;
   outline:none;
+  border-radius:35px;
+  font-size:17px;
 }
-.container{padding:45px 6%}
-.title{
-  font-size:28px;
+
+/* CONTENT */
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:45px 25px;
+}
+
+.section-title{
+  font-size:30px;
   margin-bottom:25px;
 }
-.title span{color:#ff3d81}
+
+.section-title span{
+  color:#ff2f92;
+}
+
+/* CARDS */
 .grid{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(190px,1fr));
+  grid-template-columns:repeat(4,1fr);
   gap:22px;
 }
+
 .card{
-  background:#151420;
+  background:#151320;
+  border:1px solid #272335;
   border-radius:15px;
   overflow:hidden;
-  transition:.3s;
-  border:1px solid #252235;
+  transition:.25s;
 }
+
 .card:hover{
   transform:translateY(-7px);
-  border-color:#ff3d81;
+  border-color:#ff2f92;
   box-shadow:0 10px 30px #0008;
 }
-.card img{
-  width:100%;
-  height:270px;
-  object-fit:cover;
-  display:block;
+
+.poster{
+  height:280px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:20px;
+  background:
+    linear-gradient(145deg,#ff2f92,#551d7d,#171126);
 }
-.info{padding:15px}
+
+.poster h3{
+  font-size:28px;
+  text-shadow:0 3px 10px #000;
+}
+
+.info{
+  padding:17px;
+}
+
 .info h3{
-  font-size:17px;
+  font-size:19px;
   margin-bottom:10px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
 }
-.rating{color:#ffd43b}
-.type{
+
+.meta{
+  display:flex;
+  justify-content:space-between;
   color:#aaa;
-  font-size:13px;
-  margin-top:7px;
+  font-size:14px;
 }
-.loading{
+
+.rating{
+  color:#ffd447;
+}
+
+.watch{
+  display:block;
   text-align:center;
-  color:#aaa;
-  padding:40px;
+  margin-top:15px;
+  padding:11px;
+  background:#ff2f92;
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+  font-weight:bold;
 }
+
+.watch:hover{
+  background:#d91b75;
+}
+
+/* EMPTY */
+.empty{
+  text-align:center;
+  padding:60px;
+  color:#aaa;
+  display:none;
+}
+
+/* FOOTER */
 footer{
-  text-align:center;
+  margin-top:50px;
   padding:35px;
-  background:#11101c;
-  color:#888;
-  margin-top:30px;
+  text-align:center;
+  background:#100d1c;
+  color:#777;
 }
-@media(max-width:600px){
-  .hero{padding:60px 15px}
-  .hero h1{font-size:36px}
-  header{padding:15px 20px}
-  nav a{margin-left:10px;font-size:14px}
+
+/* MOBILE */
+@media(max-width:900px){
+  .grid{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:650px){
+  .nav{
+    padding:16px;
+  }
+
+  .logo{
+    font-size:23px;
+  }
+
+  nav a{
+    margin-left:12px;
+    font-size:14px;
+  }
+
+  .hero{
+    min-height:350px;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
   .grid{
     grid-template-columns:repeat(2,1fr);
     gap:14px;
   }
-  .card img{height:230px}
+
+  .poster{
+    height:220px;
+  }
+
+  .poster h3{
+    font-size:21px;
+  }
+
+  .container{
+    padding:30px 15px;
+  }
+}
+
+@media(max-width:380px){
+  .grid{
+    grid-template-columns:1fr;
+  }
+
+  .poster{
+    height:280px;
+  }
 }
 </style>
 </head>
@@ -124,121 +260,216 @@ footer{
 <body>
 
 <header>
-  <div class="logo">ANIME MANGA</div>
-  <nav>
-    <a href="#">Accueil</a>
-    <a href="#anime">Anime</a>
-  </nav>
+  <div class="nav">
+
+    <div class="logo">ANIMEZONE</div>
+
+    <nav>
+      <a href="#">Accueil</a>
+      <a href="#anime">Anime</a>
+    </nav>
+
+  </div>
 </header>
 
+
 <section class="hero">
-  <h1>Bienvenue sur <span>Anime Manga</span></h1>
-  <p>Découvrez vos anime et manga préférés.</p>
 
-  <input
-    id="search"
-    class="search"
-    type="text"
-    placeholder="🔎 Rechercher un anime ou manga..."
-  >
-</section>
+  <div>
 
-<section class="container" id="anime">
-  <h2 class="title">🔥 Anime <span>populaires</span></h2>
-  <div id="animeList" class="grid">
-    <div class="loading">Chargement des anime...</div>
+    <h1>
+      Bienvenue sur<br>
+      <span class="pink">AnimeZone</span>
+    </h1>
+
+    <p>
+      Découvrez vos anime préférés.
+    </p>
+
+    <input
+      id="search"
+      class="search"
+      type="text"
+      placeholder="🔎 Rechercher un anime..."
+    >
+
   </div>
+
 </section>
+
+
+<main class="container" id="anime">
+
+  <h2 class="section-title">
+    🔥 Anime <span>populaires</span>
+  </h2>
+
+  <div id="animeGrid" class="grid"></div>
+
+  <div id="empty" class="empty">
+    Aucun anime trouvé.
+  </div>
+
+</main>
+
 
 <footer>
-  © 2026 Anime Manga — Tous droits réservés
+  © 2026 AnimeZone — Tous droits réservés
 </footer>
 
+
 <script>
-const list = document.getElementById("animeList");
-const search = document.getElementById("search");
 
-async function loadAnime(url) {
-  list.innerHTML = '<div class="loading">Chargement...</div>';
+const anime = [
 
-  try {
-    const response = await fetch(url);
+  {
+    title:"Naruto",
+    type:"TV",
+    score:"8.4"
+  },
 
-    if (!response.ok) {
-      throw new Error("Erreur API : " + response.status);
-    }
+  {
+    title:"One Piece",
+    type:"TV",
+    score:"9.0"
+  },
 
-    const data = await response.json();
+  {
+    title:"Demon Slayer",
+    type:"TV",
+    score:"8.6"
+  },
 
-    if (!data.data || data.data.length === 0) {
-      list.innerHTML = '<div class="loading">Aucun anime trouvé.</div>';
-      return;
-    }
+  {
+    title:"Jujutsu Kaisen",
+    type:"TV",
+    score:"8.5"
+  },
 
-    list.innerHTML = "";
+  {
+    title:"Attack on Titan",
+    type:"TV",
+    score:"9.1"
+  },
 
-    data.data.forEach(anime => {
-      const title =
-        anime.title ||
-        anime.title_english ||
-        anime.title_japanese ||
-        "Anime";
+  {
+    title:"Dragon Ball",
+    type:"TV",
+    score:"8.4"
+  },
 
-      const image =
-        anime.images?.jpg?.large_image_url ||
-        anime.images?.jpg?.image_url ||
-        "";
+  {
+    title:"Bleach",
+    type:"TV",
+    score:"8.2"
+  },
 
-      const score =
-        anime.score != null ? anime.score : "N/A";
+  {
+    title:"Solo Leveling",
+    type:"TV",
+    score:"8.8"
+  },
 
-      const type =
-        anime.type || "Anime";
+  {
+    title:"My Hero Academia",
+    type:"TV",
+    score:"8.0"
+  },
 
-      const card = document.createElement("div");
-      card.className = "card";
+  {
+    title:"Black Clover",
+    type:"TV",
+    score:"8.1"
+  },
 
-      card.innerHTML = `
-        <img src="${image}" alt="${title}">
-        <div class="info">
-          <h3>${title}</h3>
-          <div class="rating">⭐ ${score}</div>
-          <div class="type">${type}</div>
-        </div>
-      `;
+  {
+    title:"Death Note",
+    type:"TV",
+    score:"8.6"
+  },
 
-      list.appendChild(card);
-    });
-
-  } catch (error) {
-    console.error(error);
-    list.innerHTML =
-    '<div class="loading">Erreur : ' + error.message + '</div>';
+  {
+    title:"Hunter x Hunter",
+    type:"TV",
+    score:"9.0"
   }
+
+];
+
+
+const grid = document.getElementById("animeGrid");
+const search = document.getElementById("search");
+const empty = document.getElementById("empty");
+
+
+function afficherAnime(liste){
+
+  grid.innerHTML = "";
+
+  if(liste.length === 0){
+    empty.style.display = "block";
+    return;
+  }
+
+  empty.style.display = "none";
+
+  liste.forEach(a => {
+
+    const card = document.createElement("div");
+
+    card.className = "card";
+
+    card.innerHTML = `
+
+      <div class="poster">
+        <h3>${a.title}</h3>
+      </div>
+
+      <div class="info">
+
+        <h3>${a.title}</h3>
+
+        <div class="meta">
+
+          <span>${a.type}</span>
+
+          <span class="rating">
+            ⭐ ${a.score}
+          </span>
+
+        </div>
+
+        <a href="#" class="watch">
+          ▶ Regarder
+        </a>
+
+      </div>
+
+    `;
+
+    grid.appendChild(card);
+
+  });
+
 }
 
-loadAnime("https://api.jikan.moe/v4/top/anime?limit=12");
-let timer;
 
 search.addEventListener("input", () => {
-  clearTimeout(timer);
 
-  timer = setTimeout(() => {
-    const q = search.value.trim();
+  const q = search.value.toLowerCase().trim();
 
-    if (q.length < 2) {
-      loadAnime("https://api.jikan.moe/v4/top/anime?limit=12");
-      return;
-    }
+  const resultats = anime.filter(a =>
+    a.title.toLowerCase().includes(q)
+  );
 
-    loadAnime(
-      "https://api.jikan.moe/v4/anime?q=" +
-      encodeURIComponent(q) +
-      "&limit=12"
-    );
-  }, 500);
+  afficherAnime(resultats);
+
 });
 
+
+afficherAnime(anime);
+
 </script>
+
 </body>
 </html>
