@@ -1,297 +1,1476 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>RABESAIKY ANIME</title>
+<title>RABESAIKY ANIME</title>
 
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
 
-    body {
-      font-family: Arial, sans-serif;
-      background: #0b0b0f;
-      color: white;
-    }
+:root{
+    --bg:#08090d;
+    --panel:#11131a;
+    --panel2:#171922;
+    --red:#e50914;
+    --text:#fff;
+    --muted:#999;
+    --border:#272a34;
+}
 
-    header {
-      background: #111118;
-      padding: 15px 20px;
-      border-bottom: 1px solid #292933;
-    }
+html{
+    scroll-behavior:smooth;
+}
 
-    .navbar {
-      max-width: 1100px;
-      margin: auto;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
+body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:Arial,Helvetica,sans-serif;
+}
 
-    .logo {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      color: white;
-      text-decoration: none;
-      font-size: 20px;
-      font-weight: bold;
-    }
+/* ================= HEADER ================= */
 
-    .logo img {
-      width: 45px;
-      height: 45px;
-      object-fit: cover;
-      border-radius: 10px;
-    }
+header{
+    position:sticky;
+    top:0;
+    z-index:1000;
+    background:rgba(8,9,13,.96);
+    border-bottom:1px solid var(--border);
+    backdrop-filter:blur(12px);
+}
 
-    nav a {
-      color: #bbb;
-      text-decoration: none;
-      margin-left: 20px;
-    }
+.header{
+    max-width:1250px;
+    margin:auto;
+    height:70px;
+    padding:0 20px;
 
-    nav a:hover {
-      color: white;
-    }
+    display:flex;
+    align-items:center;
+    gap:25px;
+}
 
-    .hero {
-      max-width: 1100px;
-      min-height: 320px;
-      margin: 25px auto;
-      padding: 40px;
-      border-radius: 18px;
+.logo{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    color:white;
+    text-decoration:none;
+    font-weight:900;
+    font-size:21px;
+    white-space:nowrap;
+}
 
-      background:
-        linear-gradient(
-          90deg,
-          rgba(0,0,0,0.9),
-          rgba(0,0,0,0.3)
-        ),
+.logo img{
+    width:45px;
+    height:45px;
+    border-radius:10px;
+    object-fit:cover;
+    background:#222;
+}
+
+/* Navigation */
+
+.nav{
+    display:flex;
+    gap:8px;
+}
+
+.nav button{
+    background:none;
+    border:0;
+    color:#aaa;
+    padding:12px 14px;
+    cursor:pointer;
+    font-size:14px;
+    border-radius:8px;
+}
+
+.nav button:hover,
+.nav button.active{
+    background:#1b1d25;
+    color:white;
+}
+
+/* Search */
+
+.search{
+    margin-left:auto;
+    position:relative;
+}
+
+.search input{
+    width:220px;
+    background:#171922;
+    border:1px solid var(--border);
+    color:white;
+    border-radius:22px;
+    padding:11px 42px 11px 16px;
+    outline:none;
+}
+
+.search input:focus{
+    border-color:#555;
+}
+
+.search-icon{
+    position:absolute;
+    right:15px;
+    top:10px;
+}
+
+/* ================= HERO ================= */
+
+.hero{
+    max-width:1250px;
+    min-height:430px;
+    margin:20px auto;
+    padding:45px;
+
+    border-radius:18px;
+
+    display:flex;
+    align-items:center;
+
+    background:
+        linear-gradient(90deg,
+        rgba(0,0,0,.95) 0%,
+        rgba(0,0,0,.7) 45%,
+        rgba(0,0,0,.15) 100%),
         url("photo.jpg") center/cover;
-      
-      display: flex;
-      align-items: center;
+
+    border:1px solid #20222b;
+}
+
+.hero-content{
+    max-width:600px;
+}
+
+.badge{
+    display:inline-block;
+    background:var(--red);
+    padding:7px 12px;
+    border-radius:6px;
+    font-size:12px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.hero h1{
+    font-size:48px;
+    margin-bottom:15px;
+}
+
+.hero p{
+    color:#ccc;
+    line-height:1.7;
+    margin-bottom:25px;
+}
+
+.buttons{
+    display:flex;
+    gap:12px;
+}
+
+.btn{
+    border:0;
+    cursor:pointer;
+    text-decoration:none;
+    padding:13px 20px;
+    border-radius:8px;
+    font-weight:bold;
+}
+
+.btn-red{
+    background:var(--red);
+    color:white;
+}
+
+.btn-dark{
+    background:#292b33;
+    color:white;
+}
+
+/* ================= MAIN ================= */
+
+main{
+    max-width:1250px;
+    margin:auto;
+    padding:0 20px 70px;
+}
+
+.section{
+    margin-top:40px;
+}
+
+.section-head{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    margin-bottom:20px;
+}
+
+.section-head h2{
+    font-size:25px;
+}
+
+.section-head span{
+    color:#888;
+    font-size:13px;
+}
+
+/* ================= FILTERS ================= */
+
+.filters{
+    display:flex;
+    gap:8px;
+    flex-wrap:wrap;
+    margin-bottom:25px;
+}
+
+.filter{
+    border:1px solid var(--border);
+    background:#11131a;
+    color:#aaa;
+    padding:9px 15px;
+    border-radius:20px;
+    cursor:pointer;
+}
+
+.filter:hover,
+.filter.active{
+    background:var(--red);
+    border-color:var(--red);
+    color:white;
+}
+
+/* ================= ANIME GRID ================= */
+
+.grid{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fill,minmax(175px,1fr));
+    gap:18px;
+}
+
+.card{
+    background:var(--panel);
+    border:1px solid var(--border);
+    border-radius:12px;
+    overflow:hidden;
+    cursor:pointer;
+    transition:.2s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+    border-color:#444;
+}
+
+.poster{
+    position:relative;
+    width:100%;
+    aspect-ratio:2/3;
+    background:
+        linear-gradient(135deg,#1d2029,#090a0e);
+    overflow:hidden;
+}
+
+.poster img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+}
+
+.poster::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:linear-gradient(
+        transparent 60%,
+        rgba(0,0,0,.8)
+    );
+}
+
+.type{
+    position:absolute;
+    top:9px;
+    left:9px;
+    z-index:2;
+    background:var(--red);
+    color:white;
+    font-size:10px;
+    padding:5px 7px;
+    border-radius:5px;
+    font-weight:bold;
+}
+
+.card-info{
+    padding:12px;
+}
+
+.card-title{
+    font-size:15px;
+    font-weight:bold;
+    margin-bottom:7px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.card-meta{
+    color:#888;
+    font-size:12px;
+}
+
+/* ================= SEARCH PAGE ================= */
+
+#searchPage{
+    display:none;
+}
+
+.search-result-title{
+    margin:30px 0 20px;
+}
+
+/* ================= SNS ================= */
+
+.sns{
+    display:grid;
+    grid-template-columns:
+        repeat(auto-fit,minmax(200px,1fr));
+    gap:15px;
+}
+
+.sns-box{
+    background:var(--panel);
+    border:1px solid var(--border);
+    padding:22px;
+    border-radius:12px;
+    text-decoration:none;
+    color:white;
+    transition:.2s;
+}
+
+.sns-box:hover{
+    transform:translateY(-3px);
+    background:#191b24;
+}
+
+.sns-box strong{
+    display:block;
+    margin-bottom:8px;
+}
+
+.sns-box span{
+    color:#888;
+    font-size:13px;
+}
+
+/* ================= MODAL ANIME ================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    z-index:2000;
+
+    background:rgba(0,0,0,.82);
+
+    display:none;
+    align-items:center;
+    justify-content:center;
+
+    padding:20px;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:850px;
+    max-height:90vh;
+    overflow:auto;
+
+    background:#11131a;
+    border:1px solid #30333d;
+    border-radius:15px;
+}
+
+.modal-top{
+    padding:20px;
+    display:flex;
+    justify-content:space-between;
+}
+
+.close{
+    border:0;
+    background:#292c35;
+    color:white;
+    width:35px;
+    height:35px;
+    border-radius:50%;
+    cursor:pointer;
+}
+
+.modal-content{
+    padding:0 20px 25px;
+}
+
+.detail{
+    display:flex;
+    gap:20px;
+}
+
+.detail img{
+    width:180px;
+    height:260px;
+    object-fit:cover;
+    border-radius:10px;
+}
+
+.detail-info{
+    flex:1;
+}
+
+.detail-info h2{
+    font-size:28px;
+    margin-bottom:12px;
+}
+
+.detail-info p{
+    color:#aaa;
+    line-height:1.6;
+}
+
+.episodes{
+    margin-top:25px;
+}
+
+.episodes h3{
+    margin-bottom:12px;
+}
+
+.episode-list{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+}
+
+.episode{
+    border:1px solid var(--border);
+    background:#191b23;
+    color:white;
+    padding:9px 13px;
+    border-radius:7px;
+    cursor:pointer;
+}
+
+.episode:hover{
+    background:var(--red);
+}
+
+/* ================= VIDEO ================= */
+
+.video-box{
+    margin-top:20px;
+    display:none;
+}
+
+.video-box video{
+    width:100%;
+    max-height:500px;
+    background:black;
+    border-radius:10px;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    border-top:1px solid var(--border);
+    padding:35px 20px;
+    text-align:center;
+    color:#777;
+}
+
+footer strong{
+    color:#bbb;
+}
+
+/* ================= MOBILE ================= */
+
+.bottom-nav{
+    display:none;
+}
+
+@media(max-width:800px){
+
+    .header{
+        height:62px;
+        padding:0 12px;
     }
 
-    .hero-content {
-      max-width: 600px;
+    .logo{
+        font-size:16px;
     }
 
-    .hero h1 {
-      font-size: 45px;
-      margin-bottom: 15px;
+    .logo img{
+        width:38px;
+        height:38px;
     }
 
-    .hero p {
-      color: #ccc;
-      line-height: 1.6;
-      margin-bottom: 20px;
+    .nav{
+        display:none;
     }
 
-    .button {
-      display: inline-block;
-      background: #e50914;
-      color: white;
-      padding: 12px 20px;
-      border-radius: 8px;
-      text-decoration: none;
-      font-weight: bold;
+    .search input{
+        width:145px;
     }
 
-    main {
-      max-width: 1100px;
-      margin: 35px auto;
-      padding: 0 20px;
+    .hero{
+        margin:12px;
+        min-height:390px;
+        padding:25px;
+        border-radius:15px;
     }
 
-    h2 {
-      margin-bottom: 20px;
+    .hero h1{
+        font-size:34px;
     }
 
-    .anime-grid {
-      display: grid;
-      grid-template-columns:
-        repeat(auto-fill, minmax(160px, 1fr));
-      gap: 18px;
+    main{
+        padding:0 12px 80px;
     }
 
-    .anime-card {
-      background: #15151d;
-      border: 1px solid #292933;
-      border-radius: 12px;
-      overflow: hidden;
-      transition: 0.2s;
+    .grid{
+        grid-template-columns:repeat(2,1fr);
+        gap:12px;
     }
 
-    .anime-card:hover {
-      transform: translateY(-5px);
+    .detail{
+        flex-direction:column;
     }
 
-    .anime-card img {
-      width: 100%;
-      aspect-ratio: 2 / 3;
-      object-fit: cover;
+    .detail img{
+        width:130px;
+        height:190px;
     }
 
-    .anime-info {
-      padding: 12px;
+    .bottom-nav{
+        position:fixed;
+        display:flex;
+        bottom:0;
+        left:0;
+        right:0;
+        height:62px;
+        background:#11131a;
+        border-top:1px solid var(--border);
+        z-index:1500;
     }
 
-    .anime-info h3 {
-      font-size: 15px;
-      margin-bottom: 7px;
+    .bottom-nav button{
+        flex:1;
+        background:none;
+        border:0;
+        color:#888;
+        font-size:11px;
+        cursor:pointer;
     }
 
-    .anime-info p {
-      color: #999;
-      font-size: 12px;
+    .bottom-nav button.active{
+        color:white;
+    }
+}
+
+@media(max-width:450px){
+
+    .search input{
+        width:120px;
     }
 
-    footer {
-      margin-top: 50px;
-      padding: 30px;
-      text-align: center;
-      color: #777;
-      border-top: 1px solid #222;
+    .hero{
+        min-height:350px;
     }
 
-    @media (max-width: 650px) {
-
-      nav {
-        display: none;
-      }
-
-      .hero {
-        margin: 15px;
-        padding: 25px;
-        min-height: 280px;
-      }
-
-      .hero h1 {
-        font-size: 32px;
-      }
-
-      .anime-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 12px;
-      }
+    .hero h1{
+        font-size:29px;
     }
-  </style>
+
+    .hero p{
+        font-size:14px;
+    }
+}
+</style>
 </head>
+
 
 <body>
 
-  <!-- MENU -->
-  <header>
-    <div class="navbar">
+<!-- ================= HEADER ================= -->
 
-      <a href="#" class="logo">
-        <img src="photo.jpg" alt="RABESAIKY ANIME">
-        <span>RABESAIKY ANIME</span>
-      </a>
+<header>
 
-      <nav>
-        <a href="#">Accueil</a>
-        <a href="#animes">Animes</a>
-        <a href="#nouveautes">Nouveautés</a>
-      </nav>
+<div class="header">
 
-    </div>
-  </header>
+<a href="#" class="logo" onclick="showHome()">
+
+<img src="photo.jpg" alt="Logo">
+
+<span>RABESAIKY ANIME</span>
+
+</a>
 
 
-  <!-- ACCUEIL -->
-  <section class="hero">
+<div class="nav">
 
-    <div class="hero-content">
+<button class="active" onclick="showHome()">
+Accueil
+</button>
 
-      <h1>RABESAIKY ANIME</h1>
+<button onclick="showAnime()">
+Animes
+</button>
 
-      <p>
-        Bienvenue sur RABESAIKY ANIME.
-        Retrouve ici tes animes et épisodes préférés.
-      </p>
+<button onclick="showMovies()">
+Films
+</button>
 
-      <a href="#animes" class="button">
-        Voir les animes
-      </a>
+<button onclick="showSNS()">
+SNS
+</button>
 
-    </div>
-
-  </section>
+</div>
 
 
-  <!-- ANIMES -->
-  <main id="animes">
+<div class="search">
 
-    <h2>Anime</h2>
+<input
+id="searchInput"
+type="search"
+placeholder="Rechercher..."
+oninput="searchAnime()"
+>
 
-    <div class="anime-grid">
+<span class="search-icon">🔎</span>
 
-      <div class="anime-card">
+</div>
 
-        <img src="photo.jpg" alt="Anime">
+</div>
 
-        <div class="anime-info">
-          <h3>Anime 01</h3>
-          <p>Épisode 01</p>
+</header>
+
+
+
+<!-- ================= HOME ================= -->
+
+<section id="homePage">
+
+<section class="hero">
+
+<div class="hero-content">
+
+<span class="badge">
+RABESAIKY ANIME
+</span>
+
+<h1>
+Regarde tes animes préférés
+</h1>
+
+<p>
+Bienvenue sur RABESAIKY ANIME.
+Découvre les animes, films, épisodes et nouveautés.
+</p>
+
+<div class="buttons">
+
+<a
+href="#catalogue"
+class="btn btn-red"
+>
+Voir les animes
+</a>
+
+<button
+class="btn btn-dark"
+onclick="showAnime()"
+>
+Catalogue
+</button>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<main>
+
+<!-- NOUVEAUTÉS -->
+
+<section class="section" id="catalogue">
+
+<div class="section-head">
+
+<h2>
+🔥 Nouveautés
+</h2>
+
+<span>
+Voir tout
+</span>
+
+</div>
+
+
+<div class="grid" id="homeGrid"></div>
+
+</section>
+
+
+<!-- SNS -->
+
+<section class="section">
+
+<div class="section-head">
+
+<h2>
+📱 SNS
+</h2>
+
+</div>
+
+
+<div class="sns">
+
+<a class="sns-box" href="#" onclick="return false">
+
+<strong>📢 Actualités</strong>
+
+<span>
+Retrouve les dernières nouveautés
+</span>
+
+</a>
+
+
+<a class="sns-box" href="#" onclick="return false">
+
+<strong>💬 Communauté</strong>
+
+<span>
+Rejoins la communauté RABESAIKY ANIME
+</span>
+
+</a>
+
+
+<a class="sns-box" href="#" onclick="return false">
+
+<strong>📱 Réseaux sociaux</strong>
+
+<span>
+Ajoute ici tes liens SNS
+</span>
+
+</a>
+
+</div>
+
+</section>
+
+</main>
+
+</section>
+
+
+
+<!-- ================= SEARCH ================= -->
+
+<section id="searchPage">
+
+<main>
+
+<h2 class="search-result-title">
+🔎 Résultats de recherche
+</h2>
+
+<div class="grid" id="searchGrid"></div>
+
+</main>
+
+</section>
+
+
+
+<!-- ================= CATALOGUE ================= -->
+
+<section id="animePage" style="display:none">
+
+<main>
+
+<section class="section">
+
+<div class="section-head">
+
+<h2>
+📺 Catalogue Anime
+</h2>
+
+</div>
+
+
+<div class="filters">
+
+<button
+class="filter active"
+onclick="filterAnime('Tous',this)"
+>
+Tous
+</button>
+
+<button
+class="filter"
+onclick="filterAnime('Action',this)"
+>
+Action
+</button>
+
+<button
+class="filter"
+onclick="filterAnime('Aventure',this)"
+>
+Aventure
+</button>
+
+<button
+class="filter"
+onclick="filterAnime('Comédie',this)"
+>
+Comédie
+</button>
+
+<button
+class="filter"
+onclick="filterAnime('Fantastique',this)"
+>
+Fantastique
+</button>
+
+</div>
+
+
+<div class="grid" id="animeGrid"></div>
+
+</section>
+
+</main>
+
+</section>
+
+
+
+<!-- ================= FILMS ================= -->
+
+<section id="moviePage" style="display:none">
+
+<main>
+
+<section class="section">
+
+<div class="section-head">
+
+<h2>
+🎬 Films
+</h2>
+
+</div>
+
+<div class="grid" id="movieGrid"></div>
+
+</section>
+
+</main>
+
+</section>
+
+
+
+<!-- ================= SNS ================= -->
+
+<section id="snsPage" style="display:none">
+
+<main>
+
+<section class="section">
+
+<div class="section-head">
+
+<h2>
+📱 RABESAIKY ANIME SNS
+</h2>
+
+</div>
+
+<div class="sns">
+
+<a class="sns-box" href="#" onclick="return false">
+<strong>Telegram</strong>
+<span>Ton lien Telegram ici</span>
+</a>
+
+<a class="sns-box" href="#" onclick="return false">
+<strong>TikTok</strong>
+<span>Ton lien TikTok ici</span>
+</a>
+
+<a class="sns-box" href="#" onclick="return false">
+<strong>Facebook</strong>
+<span>Ton lien Facebook ici</span>
+</a>
+
+<a class="sns-box" href="#" onclick="return false">
+<strong>Instagram</strong>
+<span>Ton lien Instagram ici</span>
+</a>
+
+</div>
+
+</section>
+
+</main>
+
+</section>
+
+
+
+<!-- ================= MODAL ================= -->
+
+<div
+class="modal"
+id="animeModal"
+onclick="closeOutside(event)"
+>
+
+<div class="modal-box">
+
+<div class="modal-top">
+
+<strong>
+RABESAIKY ANIME
+</strong>
+
+<button
+class="close"
+onclick="closeModal()"
+>
+×
+</button>
+
+</div>
+
+
+<div class="modal-content">
+
+<div class="detail">
+
+<img
+id="modalImage"
+src=""
+alt="Anime"
+>
+
+<div class="detail-info">
+
+<h2 id="modalTitle">
+Anime
+</h2>
+
+<p id="modalDescription">
+Description
+</p>
+
+<br>
+
+<p id="modalGenre">
+Genre
+</p>
+
+</div>
+
+</div>
+
+
+<div class="episodes">
+
+<h3>
+📺 Épisodes
+</h3>
+
+<div
+class="episode-list"
+id="episodeList"
+></div>
+
+</div>
+
+
+<div
+class="video-box"
+id="videoBox"
+>
+
+<video
+id="videoPlayer"
+controls
+preload="metadata"
+>
+<source
+src="videos/episode1.mp4"
+type="video/mp4"
+>
+
+Ton navigateur ne supporte pas la vidéo.
+
+</video>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+
+<!-- ================= MOBILE NAV ================= -->
+
+<div class="bottom-nav">
+
+<button
+class="active"
+onclick="showHome()"
+>
+🏠<br>
+Accueil
+</button>
+
+<button
+onclick="showAnime()"
+>
+📺<br>
+Anime
+</button>
+
+<button
+onclick="showMovies()"
+>
+🎬<br>
+Films
+</button>
+
+<button
+onclick="showSNS()"
+>
+📱<br>
+SNS
+</button>
+
+</div>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+<strong>RABESAIKY ANIME</strong>
+
+<br><br>
+
+© 2026 — Tous droits réservés.
+
+</footer>
+
+
+
+<script>
+
+/* =========================================
+   DONNÉES DES ANIMES
+========================================= */
+
+const animes = [
+
+{
+    title:"One Piece",
+    genre:"Aventure",
+    type:"VOSTFR",
+    episodes:10,
+    image:"photo.jpg",
+    description:
+    "Un grand voyage rempli d'aventure et de découvertes."
+},
+
+{
+    title:"Naruto",
+    genre:"Action",
+    type:"VF",
+    episodes:8,
+    image:"photo.jpg",
+    description:
+    "Un jeune ninja poursuit son rêve de devenir le meilleur."
+},
+
+{
+    title:"Demon Slayer",
+    genre:"Action",
+    type:"VOSTFR",
+    episodes:12,
+    image:"photo.jpg",
+    description:
+    "Une aventure fantastique remplie de combats."
+},
+
+{
+    title:"Dragon Ball",
+    genre:"Action",
+    type:"VF",
+    episodes:15,
+    image:"photo.jpg",
+    description:
+    "Des combattants repoussent leurs limites."
+},
+
+{
+    title:"Jujutsu Kaisen",
+    genre:"Fantastique",
+    type:"VOSTFR",
+    episodes:10,
+    image:"photo.jpg",
+    description:
+    "Une histoire de malédictions et de sorciers."
+},
+
+{
+    title:"My Hero Academia",
+    genre:"Action",
+    type:"VF",
+    episodes:10,
+    image:"photo.jpg",
+    description:
+    "Des héros apprennent à utiliser leurs pouvoirs."
+},
+
+{
+    title:"Spy x Family",
+    genre:"Comédie",
+    type:"VOSTFR",
+    episodes:9,
+    image:"photo.jpg",
+    description:
+    "Une famille pas comme les autres."
+},
+
+{
+    title:"Solo Leveling",
+    genre:"Fantastique",
+    type:"VOSTFR",
+    episodes:8,
+    image:"photo.jpg",
+    description:
+    "Un chasseur devient progressivement plus puissant."
+}
+
+];
+
+
+/* =========================================
+   FILMS
+========================================= */
+
+const movies = [
+
+{
+    title:"Film Anime 01",
+    genre:"Aventure",
+    type:"Film",
+    image:"photo.jpg",
+    description:"Film anime."
+},
+
+{
+    title:"Film Anime 02",
+    genre:"Action",
+    type:"Film",
+    image:"photo.jpg",
+    description:"Film anime."
+},
+
+{
+    title:"Film Anime 03",
+    genre:"Fantastique",
+    type:"Film",
+    image:"photo.jpg",
+    description:"Film anime."
+}
+
+];
+
+
+/* =========================================
+   CARTE
+========================================= */
+
+function createCard(anime){
+
+    return `
+
+    <article
+    class="card"
+    onclick='openAnime(${JSON.stringify(anime)})'
+    >
+
+        <div class="poster">
+
+            <img
+            src="${anime.image}"
+            alt="${anime.title}"
+            onerror="this.style.display='none'"
+            >
+
+            <span class="type">
+            ${anime.type}
+            </span>
+
         </div>
 
-      </div>
+        <div class="card-info">
 
+            <div class="card-title">
+            ${anime.title}
+            </div>
 
-      <div class="anime-card">
+            <div class="card-meta">
+            ${anime.genre}
+            ${anime.episodes ? " • "+anime.episodes+" épisodes" : ""}
+            </div>
 
-        <img src="photo.jpg" alt="Anime">
-
-        <div class="anime-info">
-          <h3>Anime 02</h3>
-          <p>Épisode 01</p>
         </div>
 
-      </div>
+    </article>
+
+    `;
+}
 
 
-      <div class="anime-card">
+/* =========================================
+   AFFICHAGE
+========================================= */
 
-        <img src="photo.jpg" alt="Anime">
+function renderHome(){
 
-        <div class="anime-info">
-          <h3>Anime 03</h3>
-          <p>Épisode 01</p>
-        </div>
+    const grid =
+    document.getElementById("homeGrid");
 
-      </div>
-
-
-      <div class="anime-card">
-
-        <img src="photo.jpg" alt="Anime">
-
-        <div class="anime-info">
-          <h3>Anime 04</h3>
-          <p>Épisode 01</p>
-        </div>
-
-      </div>
-
-    </div>
-
-  </main>
+    grid.innerHTML =
+    animes.slice(0,6)
+    .map(createCard)
+    .join("");
+}
 
 
-  <!-- PIED DE PAGE -->
-  <footer>
+function renderAnime(list=animes){
 
-    © 2026 RABESAIKY ANIME
+    document.getElementById("animeGrid")
+    .innerHTML =
+    list.map(createCard).join("");
 
-  </footer>
+}
 
-</body>
-</html>
+
+function renderMovies(){
+
+    document.getElementById("movieGrid")
+    .innerHTML =
+    movies.map(createCard).join("");
+
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+function hideAll(){
+
+    document.getElementById("homePage").style.display="none";
+
+    document.getElementById("searchPage").style.display="none";
+
+    document.getElementById("animePage").style.display="none";
+
+    document.getElementById("moviePage").style.display="none";
+
+    document.getElementById("snsPage").style.display="none";
+}
+
+
+function showHome(){
+
+    hideAll();
+
+    document.getElementById("homePage").style.display="block";
+
+    window.scrollTo(0,0);
+
+}
+
+
+function showAnime(){
+
+    hideAll();
+
+    document.getElementById("animePage").style.display="block";
+
+    renderAnime();
+
+    window.scrollTo(0,0);
+
+}
+
+
+function showMovies(){
+
+    hideAll();
+
+    document.getElementById("moviePage").style.display="block";
+
+    renderMovies();
+
+    window.scrollTo(0,0);
+
+}
+
+
+function showSNS(){
+
+    hideAll();
+
+    document.getElementById("snsPage").style.display="block";
+
+    window.scrollTo(0,0);
+
+}
+
+
+/* =========================================
+   RECHERCHE
+========================================= */
+
+function searchAnime(){
+
+    const value =
+    document.getElementById("searchInput")
+    .value
+    .toLowerCase()
+    .trim();
+
+
+    if(value===""){
+
+        showHome();
+
+        return;
+
+    }
+
+
+    hideAll();
+
+    document.getElementById("searchPage")
+    .style.display="block";
+
+
+    const results =
+    animes.filter(anime =>
+
+        anime.title
+        .toLowerCase()
+        .includes(value)
+
+        ||
+
+        anime.genre
+        .toLowerCase()
+        .includes(value)
+
+    );
+
+
+    document.getElementById("searchGrid")
+    .innerHTML =
+    results.length
+    ?
+    results.map(createCard).join("")
+    :
+    `<p style="color:#888">
+    Aucun anime trouvé.
+    </p>`;
+
+}
+
+
+/* =========================================
+   FILTRE
+========================================= */
+
+function filterAnime(genre,button){
+
+    document
+    .querySelectorAll(".filter")
+    .forEach(btn =>
+        btn.classList.remove("active")
+    );
+
+    button.classList.add("active");
+
+
+    if(genre==="Tous"){
+
+        renderAnime();
+
+    }else{
+
+        renderAnime(
+            animes.filter(
+                anime => anime.genre===genre
+            )
+        );
+
+    }
+
+}
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+function openAnime(anime){
+
+    document.getElementById("animeModal")
+    .classList.add("show");
+
+
+    document.getElementById("modalImage")
+    .src=anime.imag
