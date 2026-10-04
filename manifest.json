@@ -1,0 +1,21 @@
+{
+  "name": "RABESAIKY ANIME",
+  "short_name": "RABESAIKY",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#09060d",
+  "theme_color": "#ff2490",
+  "description": "RABESAIKY ANIME",
+  "icons": [
+    {
+      "src": "./profil.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "./profil.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ]
+}
