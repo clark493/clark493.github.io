@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>RABESAIKY ANIME</title>
 
 <style>
@@ -12,77 +13,72 @@
   padding:0;
 }
 
+html{
+  scroll-behavior:smooth;
+}
+
 body{
-  font-family:Arial,sans-serif;
-  background:#08050d;
+  font-family:Arial,Helvetica,sans-serif;
+  background:#07050a;
   color:white;
-  min-height:100vh;
+  padding-bottom:90px;
 }
 
 header{
   position:sticky;
   top:0;
-  z-index:100;
-  background:#100a18;
-  border-bottom:1px solid #2b1838;
-  padding:14px 18px;
-}
-
-.nav{
-  max-width:1100px;
-  margin:auto;
+  z-index:1000;
+  height:74px;
+  background:#0d0812;
+  border-bottom:1px solid #24152d;
   display:flex;
   align-items:center;
-  justify-content:space-between;
-  gap:20px;
+  padding:10px 22px;
 }
 
 .logo{
   display:flex;
   align-items:center;
-  gap:10px;
+  gap:12px;
   color:#ff2f8a;
-  font-size:24px;
+  font-size:25px;
   font-weight:900;
 }
 
 .logo img{
-  width:45px;
-  height:45px;
+  width:52px;
+  height:52px;
   border-radius:50%;
   object-fit:cover;
   border:2px solid #ff2f8a;
 }
 
 nav{
+  margin-left:auto;
   display:flex;
-  gap:8px;
+  gap:10px;
 }
 
 nav button{
   background:transparent;
-  border:0;
   color:#ddd;
-  padding:10px 13px;
-  border-radius:10px;
+  border:0;
+  padding:10px 15px;
+  font-size:15px;
   cursor:pointer;
-  font-weight:bold;
 }
 
-nav button:hover,
-nav button.active{
-  background:#ff2f8a;
-  color:white;
+nav button:hover{
+  color:#ff2f8a;
 }
 
 .hero{
-  max-width:1100px;
-  margin:25px auto;
-  padding:45px 20px;
-  text-align:center;
-  background:linear-gradient(135deg,#21102e,#100817);
-  border:1px solid #321944;
-  border-radius:22px;
+  margin:26px 17px 40px;
+  padding:42px 25px;
+  border-radius:28px;
+  background:linear-gradient(135deg,#24102f,#11091b);
+  border:1px solid #351848;
+  text-align:left;
 }
 
 .hero h1{
@@ -91,77 +87,76 @@ nav button.active{
 }
 
 .hero p{
-  color:#bbb;
-  margin-bottom:25px;
+  color:#c8becd;
+  font-size:18px;
+  margin-bottom:30px;
 }
 
 .search{
-  max-width:600px;
-  margin:auto;
   display:flex;
-  gap:10px;
+  gap:12px;
 }
 
 .search input{
   flex:1;
-  padding:15px;
-  border-radius:12px;
-  border:1px solid #3c2549;
-  background:#0d0912;
+  background:#09060d;
+  border:1px solid #472354;
+  border-radius:18px;
+  padding:17px;
   color:white;
+  font-size:16px;
   outline:none;
 }
 
-.search button{
-  padding:0 20px;
-  border:0;
-  border-radius:12px;
-  background:#ff2f8a;
-  color:white;
-  font-weight:bold;
+.search input:focus{
+  border-color:#ff2f8a;
 }
 
-main{
-  max-width:1100px;
-  margin:auto;
-  padding:0 18px 100px;
+.search button{
+  background:#ff2f8a;
+  color:white;
+  border:0;
+  border-radius:18px;
+  padding:0 25px;
+  font-weight:bold;
+  font-size:16px;
+  cursor:pointer;
 }
 
 section{
-  margin-top:35px;
+  padding:0 18px;
+  margin-bottom:45px;
 }
 
 .section-title{
-  font-size:25px;
-  margin-bottom:18px;
+  font-size:28px;
+  margin-bottom:20px;
 }
 
-.grid{
+.cards{
   display:grid;
-  grid-template-columns:repeat(5,1fr);
-  gap:16px;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:18px;
 }
 
 .card{
-  background:#120c19;
-  border:1px solid #2d1a38;
-  border-radius:15px;
+  background:#100b16;
+  border:1px solid #271630;
+  border-radius:20px;
   overflow:hidden;
-  cursor:pointer;
   transition:.2s;
 }
 
 .card:hover{
-  transform:translateY(-5px);
+  transform:translateY(-3px);
   border-color:#ff2f8a;
 }
 
 .poster{
-  height:260px;
-  background:linear-gradient(135deg,#35194d,#170d20);
-  display:flex;
-  align-items:center;
-  justify-content:center;
+  position:relative;
+  width:100%;
+  height:300px;
+  background:linear-gradient(135deg,#311441,#100a16);
   overflow:hidden;
 }
 
@@ -169,81 +164,74 @@ section{
   width:100%;
   height:100%;
   object-fit:cover;
+  display:block;
 }
 
 .poster-fallback{
   display:none;
+  position:absolute;
+  inset:0;
+  align-items:center;
+  justify-content:center;
   text-align:center;
-  padding:10px;
-  color:#ff6eaa;
+  padding:20px;
+  font-size:25px;
   font-weight:bold;
-  font-size:18px;
+  color:#ff2f8a;
 }
 
 .info{
-  padding:12px;
+  padding:15px;
 }
 
 .info h3{
-  font-size:16px;
-  margin-bottom:8px;
-  white-space:nowrap;
-  overflow:hidden;
-  text-overflow:ellipsis;
+  font-size:20px;
+  margin-bottom:10px;
 }
 
 .meta{
   display:flex;
   justify-content:space-between;
-  font-size:13px;
   color:#aaa;
+  font-size:14px;
+  margin-bottom:13px;
 }
 
 .rating{
-  color:#ffd54a;
+  color:#ffd23f;
 }
 
-.sns{
-  display:grid;
-  grid-template-columns:repeat(3,1fr);
-  gap:15px;
+.episodes-btn{
+  width:100%;
+  padding:11px;
+  border:1px solid #ff2f8a;
+  border-radius:12px;
+  background:#ff2f8a;
+  color:white;
+  font-weight:bold;
+  cursor:pointer;
 }
 
-.sns-box{
-  background:#120c19;
-  border:1px solid #2d1a38;
-  border-radius:15px;
-  padding:25px;
+.episodes-btn:hover{
+  background:#d91f72;
+}
+
+.empty{
   text-align:center;
-}
-
-.sns-box h3{
-  margin-bottom:8px;
-}
-
-.sns-box p{
   color:#aaa;
-}
-
-footer{
-  text-align:center;
-  color:#777;
   padding:30px;
-}
-
-.bottom-nav{
   display:none;
 }
 
 .modal{
-  display:none;
   position:fixed;
   inset:0;
-  z-index:200;
-  background:rgba(0,0,0,.85);
-  padding:20px;
+  z-index:3000;
+  background:rgba(0,0,0,.82);
+  display:none;
   align-items:center;
   justify-content:center;
+  padding:15px;
 }
 
 .modal.show{
@@ -252,73 +240,165 @@ footer{
 
 .modal-box{
   width:100%;
-  max-width:650px;
-  max-height:85vh;
+  max-width:700px;
+  max-height:90vh;
   overflow:auto;
   background:#100b18;
   border:2px solid #ff2f8a;
   border-radius:24px;
-  padding:28px;
-  box-shadow:0 20px 60px rgba(0,0,0,.7);
+  padding:22px;
   position:relative;
+  box-shadow:0 20px 60px rgba(0,0,0,.8);
 }
 
 .close{
   position:absolute;
   right:15px;
   top:12px;
-  background:#ff2f8a;
-  border:0;
-  color:white;
-  width:35px;
-  height:35px;
+  width:38px;
+  height:38px;
   border-radius:50%;
-  font-size:20px;
-}
-
-.modal-box h2{
-  color:#ff2f8a;
-  margin-bottom:15px;
-}
-
-.modal-box p{
-  color:#ccc;
-  line-height:1.6;
-  margin-bottom:15px;
-}
-  .modal-box button{
-  background:#ff2f8a;
-  color:white;
   border:0;
-  border-radius:10px;
-  padding:10px 14px;
-  margin:4px;
-  font-weight:bold;
+  background:#271329;
+  color:white;
+  font-size:23px;
   cursor:pointer;
 }
 
-.modal-box button:hover{
-  background:#ff5aa5;
+.modal h2{
+  color:#ff2f8a;
+  margin:5px 45px 10px 0;
 }
 
-@media(max-width:850px){
-  .grid{
-    grid-template-columns:repeat(3,1fr);
-  }
+.modal-info{
+  color:#aaa;
+  margin-bottom:15px;
+}
+
+.modal-desc{
+  color:#ddd;
+  line-height:1.6;
+}
+
+.player{
+  margin-top:20px;
+  background:#050408;
+  border-radius:15px;
+  overflow:hidden;
+  border:1px solid #302036;
+}
+
+.player video{
+  width:100%;
+  display:block;
+  max-height:390px;
+  background:#000;
+}
+
+.player-message{
+  padding:18px;
+  text-align:center;
+  color:#aaa;
+}
+
+.episode-title{
+  margin-top:25px;
+  margin-bottom:12px;
+  font-size:20px;
+  color:#fff;
+}
+
+.episode-list{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:9px;
+}
+
+.episode{
+  padding:11px 5px;
+  border:1px solid #472354;
+  background:#170d20;
+  color:white;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.episode:hover,
+.episode.active{
+  background:#ff2f8a;
+  border-color:#ff2f8a;
+}
+
+.sns{
+  background:#100b16;
+  border:1px solid #281630;
+  border-radius:20px;
+  padding:25px;
+  text-align:center;
+}
+
+.sns p{
+  color:#bbb;
+  margin-bottom:18px;
+}
+
+.sns button{
+  border:1px solid #ff2f8a;
+  background:#ff2f8a;
+  color:white;
+  border-radius:12px;
+  padding:12px 22px;
+  cursor:pointer;
+  font-weight:bold;
+}
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:76px;
+  background:#0e0913;
+  border-top:1px solid #281630;
+  z-index:2000;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+}
+
+.bottom-nav button{
+  background:none;
+  border:0;
+  color:#aaa;
+  font-size:13px;
+  cursor:pointer;
+}
+
+.bottom-nav button span{
+  display:block;
+  font-size:22px;
+  margin-bottom:3px;
+}
+
+.bottom-nav button:hover{
+  color:#ff2f8a;
 }
 
 @media(max-width:600px){
+
   header{
-    padding:10px;
+    height:70px;
+    padding:8px 17px;
   }
 
   .logo{
-    font-size:18px;
+    font-size:22px;
   }
 
   .logo img{
-    width:38px;
-    height:38px;
+    width:48px;
+    height:48px;
   }
 
   nav{
@@ -326,54 +406,58 @@ footer{
   }
 
   .hero{
-    margin:15px 10px;
-    padding:35px 15px;
+    padding:34px 22px;
   }
 
   .hero h1{
-    font-size:28px;
+    font-size:32px;
   }
 
-  main{
-    padding:0 10px 90px;
+  .hero p{
+    font-size:16px;
   }
 
-  .grid{
-    grid-template-columns:repeat(2,1fr);
-    gap:12px;
+  .search{
+    flex-direction:column;
+  }
+
+  .search button{
+    height:52px;
+  }
+
+  .cards{
+    gap:14px;
   }
 
   .poster{
-    height:230px;
+    height:270px;
   }
 
-  .sns{
-    grid-template-columns:1fr;
+  .info{
+    padding:12px;
   }
 
-  .bottom-nav{
-    display:flex;
-    position:fixed;
-    bottom:0;
-    left:0;
-    right:0;
-    z-index:150;
-    background:#100a18;
-    border-top:1px solid #321944;
-    justify-content:space-around;
-    padding:10px 5px;
+  .info h3{
+    font-size:17px;
   }
 
-  .bottom-nav button{
-    background:none;
-    border:0;
-    color:#bbb;
-    font-size:12px;
-    padding:5px;
+  .episode-list{
+    grid-template-columns:repeat(3,1fr);
+  }
+}
+
+@media(max-width:400px){
+
+  .cards{
+    grid-template-columns:1fr 1fr;
   }
 
-  .bottom-nav button.active{
-    color:#ff2f8a;
+  .poster{
+    height:220px;
+  }
+
+  .logo{
+    font-size:19px;
   }
 }
 </style>
@@ -382,326 +466,627 @@ footer{
 <body>
 
 <header>
-  <div class="nav">
 
-    <div class="logo">
-      <img src="https://clark493.github.io/profil.jpg" alt="Profil">
-      <span>RABESAIKY ANIME</span>
-    </div>
-
-    <nav>
-      <button onclick="goHome()">Accueil</button>
-      <button onclick="goAnime()">Anime</button>
-      <button onclick="goSNS()">SNS</button>
-    </nav>
-
+  <div class="logo">
+    <img src="./profil.jpg" alt="Profil">
+    <span>RABESAIKY ANIME</span>
   </div>
+
+  <nav>
+    <button onclick="goHome()">🏠 Accueil</button>
+    <button onclick="goAnime()">🎬 Anime</button>
+    <button onclick="goSNS()">📱 SNS</button>
+  </nav>
+
 </header>
 
-<div class="hero" id="accueil">
-  <h1>Bienvenue sur Anime Manga</h1>
-  <p>Découvre tes anime préférés au même endroit.</p>
-
-  <div class="search">
-    <input id="searchInput" type="text" placeholder="Rechercher un anime...">
-    <button onclick="searchAnime()">Rechercher</button>
-  </div>
-</div>
 
 <main>
 
-<section id="anime">
-  <h2 class="section-title">🔥 Anime populaires</h2>
-  <div class="grid" id="popularGrid"></div>
+<section class="hero" id="accueil">
+
+  <h1>Bienvenue sur Anime Manga</h1>
+
+  <p>
+    Découvre tes anime préférés au même endroit.
+  </p>
+
+  <div class="search">
+    <input
+      id="searchInput"
+      type="text"
+      placeholder="Rechercher un anime..."
+      oninput="searchAnime()"
+    >
+
+    <button onclick="searchAnime()">
+      Rechercher
+    </button>
+  </div>
+
 </section>
 
-<section>
-  <h2 class="section-title">✨ Anime récents</h2>
-  <div class="grid" id="recentGrid"></div>
+
+<section id="anime">
+
+  <h2 class="section-title">🔥 Anime populaires</h2>
+
+  <div class="cards" id="animeCards"></div>
+
+  <div class="empty" id="empty">
+    Aucun anime trouvé.
+  </div>
+
 </section>
+
 
 <section id="sns">
+
   <h2 class="section-title">📱 SNS</h2>
 
   <div class="sns">
 
-    <div class="sns-box">
-      <h3>📸 Instagram</h3>
-      <p>RABESAIKY ANIME</p>
-    </div>
+    <p>
+      Retrouvez RABESAIKY ANIME et découvrez les nouveautés.
+    </p>
 
-    <div class="sns-box">
-      <h3>🎵 TikTok</h3>
-      <p>Anime & Manga</p>
-    </div>
-
-    <div class="sns-box">
-      <h3>▶️ YouTube</h3>
-      <p>Vidéos Anime</p>
-    </div>
+    <button onclick="alert('SNS bientôt disponible !')">
+      Suivre
+    </button>
 
   </div>
+
 </section>
 
 </main>
 
-<footer>
-  © 2026 RABESAIKY ANIME
-</footer>
 
-<div class="bottom-nav">
-  <button onclick="goHome()">🏠<br>Accueil</button>
-  <button onclick="goAnime()">🎬<br>Anime</button>
-  <button onclick="goSNS()">📱<br>SNS</button>
-  <button onclick="focusSearch()">🔎<br>Recherche</button>
-</div>
+<!-- MODAL ANIME -->
 
 <div class="modal" id="modal">
+
   <div class="modal-box">
+
     <button class="close" onclick="closeModal()">×</button>
+
     <h2 id="modalTitle"></h2>
-    <p id="modalInfo"></p>
-    <p id="modalDesc"></p>
+
+    <div class="modal-info" id="modalInfo"></div>
+
+    <div class="modal-desc" id="modalDesc"></div>
+
+    <h3 class="episode-title">
+      📺 Saison 1
+    </h3>
+
+    <div class="episode-list" id="episodeList"></div>
+
+    <div class="player">
+
+      <video id="videoPlayer" controls playsinline>
+        <source id="videoSource" src="" type="video/mp4">
+        Ton navigateur ne peut pas lire cette vidéo.
+      </video>
+
+      <div class="player-message" id="playerMessage">
+        Sélectionne un épisode.
+      </div>
+
+    </div>
+
   </div>
+
 </div>
+
+
+<!-- MENU MOBILE -->
+
+<div class="bottom-nav">
+
+  <button onclick="goHome()">
+    <span>🏠</span>
+    Accueil
+  </button>
+
+  <button onclick="goAnime()">
+    <span>🎬</span>
+    Anime
+  </button>
+
+  <button onclick="goSNS()">
+    <span>📱</span>
+    SNS
+  </button>
+
+  <button onclick="focusSearch()">
+    <span>🔎</span>
+    Recherche
+  </button>
+
+</div>
+
 
 <script>
 
 const animes = [
 
-{
-  title:"Jujutsu Kaisen",
-  rating:"8.6",
-  type:"TV",
-  image:"https://cdn.myanimelist.net/images/anime/1171/109222.jpg",
-  desc:"Yuji Itadori rejoint le monde des exorcistes et affronte de puissantes malédictions."
-},
+  {
+    title:"Jujutsu Kaisen",
+    rating:"8.6",
+    type:"TV",
+    image:"https://kaizenanime.com/wp-content/uploads/2023/09/Jujutsu-Kaisen-2.jpg",
+    desc:"Yuji Itadori entre dans le monde des malédictions après avoir avalé un doigt de Sukuna."
+  },
 
-{
-  title:"Naruto",
-  rating:"8.4",
-  type:"TV",
-  image:"https://cdn.myanimelist.net/images/anime/13/17405.jpg",
-  desc:"Naruto rêve de devenir le meilleur ninja de son village."
-},
+  {
+    title:"Naruto",
+    rating:"8.4",
+    type:"TV",
+    image:"https://cdn.myanimelist.net/images/anime/13/17405.jpg",
+    desc:"Naruto rêve de devenir le meilleur ninja de son village."
+  },
 
+  {
+    title:"Dragon Ball",
+    rating:"8.0",
+    type:"TV",
+    image:"https://cdn.myanimelist.net/images/anime/6/20936.jpg",
+    desc:"Les aventures de Goku et de ses amis à la recherche des Dragon Balls."
+  },
 
+  {
+    title:"One Piece",
+    rating:"9.0",
+    type:"TV",
+    image:"https://cdn.myanimelist.net/images/anime/6/73245.jpg",
+    desc:"Luffy et son équipage partent à la recherche du légendaire One Piece."
+  },
 
-{
-  title:"Dragon Ball",
-  rating:"8.7",
-  type:"TV",
-  image:"https://cdn.myanimelist.net/images/anime/1887/92364.jpg",
-  desc:"Goku et ses amis vivent de grandes aventures à la recherche des Dragon Balls."
-},
+  {
+    title:"Demon Slayer",
+    rating:"8.6",
+    type:"TV",
+    image:"https://cdn.myanimelist.net/images/anime/1286/99889.jpg",
+    desc:"Tanjiro devient pourfendeur de démons afin de sauver sa sœur."
+  },
 
-{
-  title:"One Piece",
-  rating:"9.0",
-  type:"TV",
-  image:"https://cdn.myanimelist.net/images/anime/1244/138851.jpg",
-  desc:"Luffy et son équipage partent à la recherche du légendaire One Piece."
-},
+  {
+    title:"Frieren",
+    rating:"9.0",
+    type:"TV",
+    image:"https://cdn.myanimelist.net/images/anime/1015/138006.jpg",
+    desc:"Frieren voyage après la fin de l'aventure de son ancien groupe de héros."
+  },
 
-{
-  title:"Demon Slayer",
-  rating:"8.6",
-  type:"TV",
-  image:"https://cdn.myanimelist.net/images/anime/1286/99889.jpg",
-  desc:"Tanjiro devient chasseur de démons afin de sauver sa sœur."
-},
+  {
+    title:"Re:Zero",
+    rating:"8.2",
+    type:"TV",
+    image:"https://cdn.myanimelist.net/images/anime/1522/128039.jpg",
+    desc:"Subaru découvre qu'il peut revenir dans le passé après certains événements."
+  },
 
-{
-  title:"Frieren",
-  rating:"9.0",
-  type:"TV",
-  image:"https://cdn.myanimelist.net/images/anime/1015/138006.jpg",
-  desc:"Frieren voyage après la fin de la grande aventure de son ancien groupe."
-},
+  {
+    title:"My Hero Academia",
+    rating:"8.0",
+    type:"TV",
+    image:"https://cdn.myanimelist.net/images/anime/10/78745.jpg",
+    desc:"Izuku rêve de devenir un héros malgré son absence de pouvoir."
+  },
 
-{
-  title:"Re:Zero",
-  rating:"8.2",
-  type:"TV",
-  image:"https://cdn.myanimelist.net/images/anime/1522/128039.jpg",
-  desc:"Subaru découvre qu'il possède un mystérieux pouvoir lié au temps."
-},
+  {
+    title:"Spy x Family",
+    rating:"8.5",
+    type:"TV",
+    image:"https://cdn.myanimelist.net/images/anime/1441/122795.jpg",
+    desc:"Une famille particulière cache chacun un secret."
+  },
 
-{
-  title:"My Hero Academia",
-  rating:"8.0",
-  type:"TV",
-  image:"https://cdn.myanimelist.net/images/anime/10/78745.jpg",
-  desc:"Izuku rêve de devenir un héros dans un monde où les pouvoirs sont communs."
-},
+  {
+    title:"Kaiju No. 8",
+    rating:"8.3",
+    type:"TV",
+    image:"https://kaiju-no8.net/en/special/img/keyvisual/visual_03.jpg",
+    desc:"Kafka Hibino rêve de rejoindre les forces de défense et se retrouve lié à un mystérieux kaiju."
+  },
 
-{
-  title:"Spy x Family",
-  rating:"8.5",
-  type:"TV",
-  image:"https://cdn.myanimelist.net/images/anime/1441/122795.jpg",
-  desc:"Une famille pas comme les autres tente de cacher ses véritables secrets."
-},
-{
-  title:"Kaiju No. 8",
-  rating:"8.3",
-  type:"TV",
-  image:"https://kaiju-no8.net/en/special/img/keyvisual/visual_03.jpg",
-  desc:"Kafka Hibino rêve de rejoindre les forces de défense et se retrouve lié à un mystérieux kaiju."
-},
+  {
+    title:"Ajin",
+    rating:"7.8",
+    type:"TV",
+    image:"./ajin-poster.jpg",
+    desc:"Kei découvre qu'il est un Ajin et doit fuir alors que ses pouvoirs sont recherchés."
+  },
 
-{
-  title:"Ajin",
-  rating:"7.8",
-  type:"TV",
-  image:"./ajin-poster.jpg",
-  desc:"Kei découvre qu'il est un Ajin et doit fuir alors que ses pouvoirs sont recherchés."
-},
+  {
+    title:"To Be Hero X",
+    rating:"8.0",
+    type:"TV",
+    image:"https://tbhx.net/assets/img/top/firstvisual_pc.jpg",
+    desc:"Dans un monde où la confiance du public détermine les pouvoirs des héros."
+  }
 
-{
-  title:"To Be Hero X",
-  rating:"8.0",
-  type:"TV",
-  image:"https://tbhx.net/assets/img/top/firstv/visual4_thumb.jpg",
-  desc:"Dans un monde où la confiance du public détermine les pouvoirs des héros."
-},
 ];
+
+
+const animeCards =
+document.getElementById("animeCards");
+
 
 function createCard(anime){
 
   const card=document.createElement("div");
+
   card.className="card";
 
   card.innerHTML=`
+
     <div class="poster">
-      <img src="${anime.image}" alt="${anime.title}">
-      <div class="poster-fallback">${anime.title}</div>
+
+      <img
+        src="${anime.image}"
+        alt="${anime.title}"
+      >
+
+      <div class="poster-fallback">
+        ${anime.title}
+      </div>
+
     </div>
 
     <div class="info">
+
       <h3>${anime.title}</h3>
 
       <div class="meta">
-        <span class="rating">⭐ ${anime.rating}</span>
-        <span>${anime.type}</span>
+
+        <span class="rating">
+          ⭐ ${anime.rating}
+        </span>
+
+        <span>
+          ${anime.type}
+        </span>
+
       </div>
-   <button class="episodes-btn">Saisons / Épisodes</button> </div>
+
+      <button class="episodes-btn">
+        Saisons / Épisodes
+      </button>
+
+    </div>
+
   `;
 
+
   const img=card.querySelector("img");
+
   const fallback=card.querySelector(".poster-fallback");
 
   img.onerror=function(){
+
     img.style.display="none";
-    fallback.style.display="block";
+
+    fallback.style.display="flex";
+
   };
 
-  card.onclick=function(){
-    openAnime(anime);
-  };
+
+  card
+    .querySelector(".episodes-btn")
+    .onclick=function(){
+
+      openAnime(anime);
+
+    };
+
 
   return card;
+
 }
+
 
 function render(list=animes){
 
-  const popular=document.getElementById("popularGrid");
-  const recent=document.getElementById("recentGrid");
+  animeCards.innerHTML="";
 
-  popular.innerHTML="";
-  recent.innerHTML="";
+  const empty=document.getElementById("empty");
 
-  list.slice(0,5).forEach(anime=>{
-    popular.appendChild(createCard(anime));
+  if(list.length===0){
+
+    empty.style.display="block";
+
+    return;
+
+  }
+
+  empty.style.display="none";
+
+  list.forEach(anime=>{
+
+    animeCards.appendChild(
+      createCard(anime)
+    );
+
   });
 
-  list.slice(5).forEach(anime=>{
-    recent.appendChild(createCard(anime));
-  });
 }
+
 
 function searchAnime(){
 
-  const text=document
+  const value=
+    document
     .getElementById("searchInput")
     .value
     .toLowerCase()
     .trim();
 
-  if(text===""){
-    render();
+
+  if(value===""){
+
+    render(animes);
+
     return;
+
   }
 
-  const result=animes.filter(anime =>
-    anime.title.toLowerCase().includes(text)
-  );
 
-  render(result);
+  const results=
+    animes.filter(anime=>
+      anime.title
+      .toLowerCase()
+      .includes(value)
+    );
 
-  document.getElementById("anime")
-    .scrollIntoView({behavior:"smooth"});
+
+  render(results);
+
 }
 
-function focusSearch(){
+
+function openAnime(anime){
 
   document
-    .getElementById("searchInput")
-    .focus();
+    .getElementById("modalTitle")
+    .textContent=anime.title;
+
+
+  document
+    .getElementById("modalInfo")
+    .textContent=
+      "⭐ Note : "
+      + anime.rating
+      + "  •  📺 "
+      + anime.type;
+
+
+  document
+    .getElementById("modalDesc")
+    .textContent=
+      anime.desc;
+
+
+  const episodeList=
+    document.getElementById("episodeList");
+
+
+  episodeList.innerHTML="";
+
+
+  /*
+    IMPORTANT :
+
+    Les fichiers ci-dessous sont des exemples
+    pour TES propres vidéos ou vidéos dont tu
+    as l'autorisation de diffusion.
+
+    Exemple :
+    videos/jujutsu-s1-e1.mp4
+    videos/jujutsu-s1-e2.mp4
+    etc.
+  */
+
+
+  for(let i=1;i<=24;i++){
+
+    const button=
+      document.createElement("button");
+
+    button.className="episode";
+
+    button.textContent=
+      "Épisode "+i;
+
+
+    button.onclick=function(){
+
+      playEpisode(anime,i);
+
+    };
+
+
+    episodeList.appendChild(button);
+
+  }
+
+
+  document
+    .getElementById("modal")
+    .classList.add("show");
+
+
+  resetPlayer();
+
+}
+
+
+function playEpisode(anime,episode){
+
+  const video=
+    document.getElementById("videoPlayer");
+
+  const source=
+    document.getElementById("videoSource");
+
+  const message=
+    document.getElementById("playerMessage");
+
+
+  /*
+    Pour une vidéo autorisée :
+
+    videos/jujutsu-s1-e1.mp4
+    videos/jujutsu-s1-e2.mp4
+    etc.
+  */
+
+
+  let slug=
+    anime.title
+      .toLowerCase()
+      .replaceAll(" ","-")
+      .replaceAll("x","x");
+
+
+  source.src=
+    "./videos/"
+    + slug
+    + "-s1-e"
+    + episode
+    + ".mp4";
+
+
+  video.load();
+
+
+  message.textContent=
+    anime.title
+    + " — Épisode "
+    + episode;
+
+
+  const buttons=
+    document.querySelectorAll(".episode");
+
+
+  buttons.forEach((button,index)=>{
+
+    button.classList.toggle(
+      "active",
+      index+1===episode
+    );
+
+  });
+
+
+  video.play().catch(()=>{});
+
+}
+
+
+function resetPlayer(){
+
+  const video=
+    document.getElementById("videoPlayer");
+
+  const source=
+    document.getElementById("videoSource");
+
+  source.src="";
+
+  video.load();
+
+  document
+    .getElementById("playerMessage")
+    .textContent=
+      "Sélectionne un épisode.";
+
+}
+
+
+function closeModal(){
+
+  const modal=
+    document.getElementById("modal");
+
+  const video=
+    document.getElementById("videoPlayer");
+
+  video.pause();
+
+  modal.classList.remove("show");
+
+}
+
+
+document
+  .getElementById("modal")
+  .addEventListener("click",function(event){
+
+    if(event.target===this){
+
+      closeModal();
+
+    }
+
+  });
+
+
+function goHome(){
+
+  document
+    .getElementById("accueil")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+function goAnime(){
+
+  document
+    .getElementById("anime")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+function goSNS(){
+
+  document
+    .getElementById("sns")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+function focusSearch(){
 
   window.scrollTo({
     top:0,
     behavior:"smooth"
   });
+
+  setTimeout(()=>{
+
+    document
+      .getElementById("searchInput")
+      .focus();
+
+  },400);
+
 }
 
-function openAnime(anime){
 
-  document.getElementById("modalTitle").textContent=anime.title;
-
-  document.getElementById("modalInfo").textContent=
-    "⭐ Note : "+anime.rating+"   •   📺 "+anime.type;
-
-  document.getElementById("modalDesc").innerHTML =
-anime.desc +
-"<br><br><strong>📺 Saison 1</strong><br>" +
-'<a href="https://www.crunchyroll.com/series/GRDV0019R/jujutsu-kaisen" target="_blank"><button>▶ Épisodes officiels</button></a>';
-
-  document.getElementById("modal").classList.add("show");
-}
-
-function closeModal(){
-  document.getElementById("modal").classList.remove("show");
-}
-
-function goHome(){
-  document.getElementById("accueil")
-    .scrollIntoView({behavior:"smooth"});
-}
-
-function goAnime(){
-  document.getElementById("anime")
-    .scrollIntoView({behavior:"smooth"});
-}
-
-function goSNS(){
-  document.getElementById("sns")
-    .scrollIntoView({behavior:"smooth"});
-}
-
-document
-  .getElementById("searchInput")
-  .addEventListener("keydown",function(e){
-
-    if(e.key==="Enter"){
-      searchAnime();
-    }
-
-  });
-
-render();
+render(animes);
 
 </script>
 
 </body>
-  </html>
+        </html>
