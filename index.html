@@ -1134,5 +1134,54 @@ if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("./sw.js");
 }
 </script>
+<!-- LECTEUR SCAN -->
+<section id="scan-reader" style="padding:20px;">
+  <h2 style="text-align:center;">📖 RABESAIKY ANIME — Scan</h2>
+
+  <div style="text-align:center;margin-bottom:15px;">
+    <button onclick="pagePrecedente()">⬅️</button>
+    <span id="pageNumber">Page 1</span>
+    <button onclick="pageSuivante()">➡️</button>
+  </div>
+
+  <div style="text-align:center;">
+    <img id="scanPage"
+         src="./scans/ep1/page1.jpg"
+         alt="Scan page 1"
+         style="max-width:100%;height:auto;border-radius:10px;">
+  </div>
+</section>
+
+<script>
+const pages = [
+  "./scans/ep1/page1.jpg",
+  "./scans/ep1/page2.jpg",
+  "./scans/ep1/page3.jpg",
+  "./scans/ep1/page4.jpg",
+  "./scans/ep1/page5.jpg"
+];
+
+let pageActuelle = 0;
+
+function afficherPage() {
+  document.getElementById("scanPage").src = pages[pageActuelle];
+  document.getElementById("pageNumber").textContent =
+    "Page " + (pageActuelle + 1);
+}
+
+function pageSuivante() {
+  if (pageActuelle < pages.length - 1) {
+    pageActuelle++;
+    afficherPage();
+  }
+}
+
+function pagePrecedente() {
+  if (pageActuelle > 0) {
+    pageActuelle--;
+    afficherPage();
+  }
+}
+</script>
 </body>
         </html>
