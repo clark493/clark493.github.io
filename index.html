@@ -1093,101 +1093,114 @@ footer{
           </div>
         </div>
 
-      </article>
+<!-- AFFICHES AUTOMATIQUES DES 20 ANIME -->
+<script>
+const animePosters = {
+  "Jujutsu Kaisen": "Jujutsu Kaisen",
+  "Kaiju No. 8": "Kaiju No. 8",
+  "Demon Slayer": "Kimetsu no Yaiba",
+  "My Hero Academia": "Boku no Hero Academia",
+  "To Be Hero X": "To Be Hero X",
+  "Re:Zero": "Re:Zero kara Hajimeru Isekai Seikatsu",
+  "Tokyo Ghoul": "Tokyo Ghoul",
+  "Sakamoto Days": "Sakamoto Days",
+  "DAN DA DAN": "Dandadan",
+  "Solo Leveling": "Ore dake Level Up na Ken",
+  "One Piece": "One Piece",
+  "Hell's Paradise": "Jigokuraku",
+  "Ajin": "Ajin",
+  "Super Cube": "Super Cube",
+  "Attack on Titan": "Shingeki no Kyojin",
+  "Naruto": "Naruto",
+  "Bleach": "Bleach",
+  "Chainsaw Man": "Chainsaw Man",
+  "One Punch Man": "One Punch Man",
+  "Frieren": "Sousou no Frieren"
+};
 
+async function chargerAffiches() {
 
-      <!-- 17 -->
+  const cartes = document.querySelectorAll(".anime-card");
 
-      <article
-        class="anime-card"
-        data-title="Bleach"
-        onclick="openAnime('Bleach')">
+  for (const carte of cartes) {
 
-        <div class="poster bleach">
-          <div class="poster-title">
-            Bleach
-          </div>
-        </div>
+    const titre = carte.dataset.title;
+    const recherche = animePosters[titre];
 
-        <div class="anime-info">
-          <h3>Bleach</h3>
-          <div class="meta">
-            <span>TV</span>
-            <span class="rating">⭐ 9.2</span>
-          </div>
-        </div>
+    if (!recherche) continue;
 
-      </article>
+    try {
 
+      const reponse = await fetch(
+        "https://graphql.anilist.co",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            query: `
+              query ($search: String) {
+                Media(
+                  search: $search,
+                  type: ANIME
+                ) {
+                  coverImage {
+                    large
+                  }
+                }
+              }
+            `,
+            variables: {
+              search: recherche
+            }
+          })
+        }
+      );
 
-      <!-- 18 -->
+      const donnees = await reponse.json();
 
-      <article
-        class="anime-card"
-        data-title="Chainsaw Man"
-        onclick="openAnime('Chainsaw Man')">
+      const image =
+        donnees.data &&
+        donnees.data.Media &&
+        donnees.data.Media.coverImage &&
+        donnees.data.Media.coverImage.large;
 
-        <div class="poster chainsaw">
-          <div class="poster-title">
-            Chainsaw Man
-          </div>
-        </div>
+      if (image) {
 
-        <div class="anime-info">
-          <h3>Chainsaw Man</h3>
-          <div class="meta">
-            <span>TV</span>
-            <span class="rating">⭐ 9.1</span>
-          </div>
-        </div>
+        const poster = carte.querySelector(".poster");
 
-      </article>
+        if (poster) {
 
+          const ancienneImage = poster.querySelector("img");
 
-      <!-- 19 -->
+          if (ancienneImage) {
+            ancienneImage.remove();
+          }
 
-      <article
-        class="anime-card"
-        data-title="One Punch Man"
-        onclick="openAnime('One Punch Man')">
+          const img = document.createElement("img");
 
-        <div class="poster opm">
-          <div class="poster-title">
-            One Punch Man
-          </div>
-        </div>
+          img.src = image;
+          img.alt = titre;
+          img.loading = "lazy";
 
-        <div class="anime-info">
-          <h3>One Punch Man</h3>
-          <div class="meta">
-            <span>TV</span>
-<span class="rating">⭐ 9.3</span>
-</div>
-</div>
-</article>
+          img.style.width = "100%";
+          img.style.height = "100%";
+          img.style.objectFit = "cover";
+          img.style.display = "block";
 
-<!-- 20 -->
-<article
-  class="anime-card"
-  data-title="Frieren"
-  onclick="openAnime('Frieren')">
+          poster.insertBefore(img, poster.firstChild);
+        }
+      }
 
-  <div class="poster frieren">
-    <div class="poster-title">
-      Frieren
-    </div>
-  </div>
+    } catch (erreur) {
+      console.log("Affiche impossible :", titre);
+    }
+  }
+}
 
-  <div class="anime-info">
-    <h3>Frieren</h3>
-
-    <div class="meta">
-      <span>TV</span>
-      <span class="rating">⭐ 9.5</span>
-    </div>
-  </div>
-
-</article>
+chargerAffiches();
+</script>
 
 </div>
 
