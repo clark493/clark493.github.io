@@ -1,1 +1,764 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<title>RABESAIKY ANIME</title>
+
+<link rel="icon" href="./icon-512.svg">
+<link rel="manifest" href="./manifest.json">
+
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  background:#08050b;
+  color:white;
+  font-family:Arial, sans-serif;
+  padding-bottom:80px;
+}
+
+header{
+  height:120px;
+  background:#0d0811;
+  display:flex;
+  align-items:center;
+  gap:18px;
+  padding:20px 28px;
+  border-bottom:1px solid #24142d;
+}
+
+.logo{
+  width:82px;
+  height:82px;
+  border-radius:50%;
+  object-fit:cover;
+  border:3px solid #ff2490;
+}
+
+header h1{
+  color:#ff2490;
+  font-size:32px;
+}
+
+.hero{
+  margin:0 28px;
+  padding:40px 25px;
+  text-align:center;
+  background:linear-gradient(145deg,#1d0d28,#100918);
+  border-radius:0 0 35px 35px;
+}
+
+.hero h2{
+  font-size:34px;
+  margin-bottom:15px;
+}
+
+.hero p{
+  color:#c9bdcc;
+  font-size:20px;
+  margin-bottom:30px;
+}
+
+.search-box{
+  max-width:600px;
+  margin:auto;
+}
+
+.search-box input{
+  width:100%;
+  padding:20px;
+  border-radius:30px;
+  border:1px solid #442052;
+  background:#08050b;
+  color:white;
+  font-size:18px;
+  outline:none;
+}
+
+.search-box button{
+  width:100%;
+  margin-top:15px;
+  padding:18px;
+  border:0;
+  border-radius:30px;
+  background:#ff2490;
+  color:white;
+  font-size:20px;
+  font-weight:bold;
+}
+
+section{
+  padding:35px 28px;
+}
+
+.section-title{
+  font-size:32px;
+  margin-bottom:25px;
+}
+
+.anime-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:22px;
+}
+
+.anime-card{
+  background:#120b17;
+  border:1px solid #281530;
+  border-radius:18px;
+  overflow:hidden;
+  cursor:pointer;
+  transition:transform .2s;
+}
+
+.anime-card:hover{
+  transform:scale(1.02);
+}
+
+.anime-card img{
+  width:100%;
+  height:260px;
+  object-fit:cover;
+  display:block;
+}
+
+.anime-info{
+  padding:15px;
+}
+
+.anime-info h3{
+  font-size:20px;
+  margin-bottom:8px;
+}
+
+.rating{
+  color:#ffd700;
+}
+
+.detail{
+  color:#aaa;
+  margin-top:6px;
+}
+
+.sns{
+  background:#120b17;
+  border:1px solid #281530;
+  border-radius:25px;
+  padding:25px;
+  text-align:center;
+}
+
+.sns p{
+  color:#ccc;
+  font-size:18px;
+  margin-bottom:20px;
+}
+
+.sns a{
+  display:block;
+  text-decoration:none;
+  color:white;
+  margin:12px 0;
+  padding:17px;
+  border-radius:15px;
+  font-size:18px;
+  font-weight:bold;
+}
+
+.gmail{
+  background:#e53935;
+}
+
+.whatsapp{
+  background:#25d366;
+}
+
+.facebook{
+  background:#1877f2;
+}
+
+.instagram{
+  background:#e1306c;
+}
+
+/* SCAN */
+
+#scanReader{
+  display:none;
+  background:#09060d;
+  min-height:100vh;
+}
+
+.scan-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:20px;
+}
+
+.scan-header h2{
+  color:#ff2490;
+}
+
+.close-scan{
+  background:#ff2490;
+  color:white;
+  border:0;
+  border-radius:10px;
+  padding:10px 16px;
+  font-size:16px;
+}
+
+.scan-page{
+  text-align:center;
+}
+
+.scan-page img{
+  width:100%;
+  max-width:900px;
+  height:auto;
+  border-radius:8px;
+  display:block;
+  margin:auto;
+}
+
+.scan-controls{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:20px;
+  margin:20px 0;
+}
+
+.scan-controls button{
+  background:#ff2490;
+  color:white;
+  border:0;
+  padding:12px 22px;
+  border-radius:12px;
+  font-size:18px;
+}
+
+#pageNumber{
+  font-weight:bold;
+  font-size:18px;
+}
+
+/* NAVIGATION */
+
+.bottom-nav{
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  height:75px;
+  background:#100a12;
+  border-top:1px solid #302035;
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+  z-index:1000;
+}
+
+.bottom-nav button{
+  background:none;
+  border:0;
+  color:#aaa;
+  font-size:15px;
+}
+
+.bottom-nav span{
+  display:block;
+  font-size:25px;
+  margin-bottom:3px;
+}
+
+.no-result{
+  display:none;
+  text-align:center;
+  color:#aaa;
+  padding:30px;
+  font-size:18px;
+}
+
+@media(max-width:600px){
+
+  header{
+    height:120px;
+    padding:18px 28px;
+  }
+
+  .logo{
+    width:82px;
+    height:82px;
+  }
+
+  header h1{
+    font-size:28px;
+  }
+
+  .hero h2{
+    font-size:28px;
+  }
+
+  .anime-grid{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .anime-card img{
+    height:230px;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <img class="logo" src="./profil.jpg" alt="RABESAIKY ANIME">
+  <h1>RABESAIKY ANIME</h1>
+</header>
+
+
+<!-- ACCUEIL -->
+
+<main id="home">
+
+  <div class="hero">
+
+    <h2>Bienvenue sur Anime Manga</h2>
+
+    <p>
+      Découvre tes anime préférés au même endroit.
+    </p>
+
+    <div class="search-box">
+      <input
+        id="searchInput"
+        type="text"
+        placeholder="Rechercher un anime..."
+        oninput="rechercherAnime()"
+      >
+
+      <button onclick="rechercherAnime()">
+        Rechercher
+      </button>
+    </div>
+
+  </div>
+
+
+  <!-- ANIME -->
+
+  <section id="anime">
+
+    <h2 class="section-title">
+      🔥 Anime populaires
+    </h2>
+
+    <div class="anime-grid" id="animeGrid">
+
+      <!-- SAVILAVA FAMILY -->
+
+      <div
+        class="anime-card"
+        data-name="savilava family"
+        onclick="ouvrirScan()"
+      >
+
+        <img
+          src="./scans/ep1/page1.png"
+          alt="Savilava Family"
+        >
+
+        <div class="anime-info">
+
+          <h3>Savilava Family</h3>
+
+          <div class="rating">
+            ⭐ 9.8
+          </div>
+
+          <div class="detail">
+            Manga • EP1
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div id="noResult" class="no-result">
+      Aucun anime trouvé.
+    </div>
+
+  </section>
+
+
+  <!-- SNS -->
+
+  <section id="sns">
+
+    <h2 class="section-title">
+      📱 SNS
+    </h2>
+
+    <div class="sns">
+
+      <p>
+        Retrouvez RABESAIKY ANIME et contactez-moi :
+      </p>
+
+      <a
+        class="gmail"
+        href="mailto:andaohiconnecte@gmail.com"
+      >
+        📧 Gmail
+      </a>
+
+      <a
+        class="whatsapp"
+        href="https://wa.me/261336799396"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        🟢 WhatsApp
+      </a>
+
+      <a
+        class="facebook"
+        href="https://www.facebook.com/profile.php?id=61560807606489"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        🔵 Facebook — Dina andi
+      </a>
+
+      <a
+        class="instagram"
+        href="https://www.instagram.com/rabesaikyclairiot2026/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        📸 Instagram — @rabesaikyclairiot2026
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
+
+
+<!-- LECTEUR SCAN -->
+
+<section id="scanReader">
+
+  <div class="scan-header">
+
+    <h2>📖 Savilava Family</h2>
+
+    <button
+      class="close-scan"
+      onclick="fermerScan()"
+    >
+      ✕ Fermer
+    </button>
+
+  </div>
+
+  <div class="scan-controls">
+
+    <button onclick="pagePrecedente()">
+      ⬅️
+    </button>
+
+    <span id="pageNumber">
+      Page 1
+    </span>
+
+    <button onclick="pageSuivante()">
+      ➡️
+    </button>
+
+  </div>
+
+  <div class="scan-page">
+
+    <img
+      id="scanPage"
+      src="./scans/ep1/page1.png"
+      alt="Savilava Family Page 1"
+    >
+
+  </div>
+
+  <div class="scan-controls">
+
+    <button onclick="pagePrecedente()">
+      ⬅️ Page précédente
+    </button>
+
+    <button onclick="pageSuivante()">
+      Page suivante ➡️
+    </button>
+
+  </div>
+
+</section>
+
+
+<!-- NAVIGATION -->
+
+<nav class="bottom-nav">
+
+  <button onclick="allerAccueil()">
+    <span>🏠</span>
+    Accueil
+  </button>
+
+  <button onclick="allerAnime()">
+    <span>🎬</span>
+    Anime
+  </button>
+
+  <button onclick="allerSNS()">
+    <span>📱</span>
+    SNS
+  </button>
+
+  <button onclick="allerRecherche()">
+    <span>🔎</span>
+    Recherche
+  </button>
+
+</nav>
+
+
+<script>
+
+/* =========================
+   SCAN SAVILAVA FAMILY
+========================= */
+
+const pages = [
+  "./scans/ep1/page1.png",
+  "./scans/ep1/page2.png",
+  "./scans/ep1/page3.png"
+];
+
+let pageActuelle = 0;
+
+
+function afficherPage(){
+
+  document.getElementById("scanPage").src =
+    pages[pageActuelle];
+
+  document.getElementById("pageNumber").textContent =
+    "Page " + (pageActuelle + 1);
+
+}
+
+
+function pageSuivante(){
+
+  if(pageActuelle < pages.length - 1){
+
+    pageActuelle++;
+
+    afficherPage();
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  }
+
+}
+
+
+function pagePrecedente(){
+
+  if(pageActuelle > 0){
+
+    pageActuelle--;
+
+    afficherPage();
+
+    window.scrollTo({
+      top:0,
+      behavior:"smooth"
+    });
+
+  }
+
+}
+
+
+function ouvrirScan(){
+
+  document.querySelector("main").style.display =
+    "none";
+
+  document.getElementById("scanReader").style.display =
+    "block";
+
+  pageActuelle = 0;
+
+  afficherPage();
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+function fermerScan(){
+
+  document.getElementById("scanReader").style.display =
+    "none";
+
+  document.querySelector("main").style.display =
+    "block";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+/* =========================
+   RECHERCHE
+========================= */
+
+function rechercherAnime(){
+
+  const recherche =
+    document.getElementById("searchInput")
+    .value
+    .toLowerCase()
+    .trim();
+
+  const cartes =
+    document.querySelectorAll(".anime-card");
+
+  let trouve = false;
+
+  cartes.forEach(function(carte){
+
+    const nom =
+      carte.dataset.name.toLowerCase();
+
+    if(
+      recherche === "" ||
+      nom.includes(recherche)
+    ){
+
+      carte.style.display = "block";
+
+      trouve = true;
+
+    }else{
+
+      carte.style.display = "none";
+
+    }
+
+  });
+
+  document.getElementById("noResult").style.display =
+    trouve ? "none" : "block";
+
+}
+
+
+/* =========================
+   NAVIGATION
+========================= */
+
+function allerAccueil(){
+
+  document.getElementById("scanReader").style.display =
+    "none";
+
+  document.querySelector("main").style.display =
+    "block";
+
+  window.scrollTo({
+    top:0,
+    behavior:"smooth"
+  });
+
+}
+
+
+function allerAnime(){
+
+  document.getElementById("scanReader").style.display =
+    "none";
+
+  document.querySelector("main").style.display =
+    "block";
+
+  document.getElementById("anime")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+function allerSNS(){
+
+  document.getElementById("scanReader").style.display =
+    "none";
+
+  document.querySelector("main").style.display =
+    "block";
+
+  document.getElementById("sns")
+    .scrollIntoView({
+      behavior:"smooth"
+    });
+
+}
+
+
+function allerRecherche(){
+
+  document.getElementById("scanReader").style.display =
+    "none";
+
+  document.querySelector("main").style.display =
+    "block";
+
+  window.scrollTo({
+    top:180,
+    behavior:"smooth"
+  });
+
+  setTimeout(function(){
+
+    document.getElementById("searchInput").focus();
+
+  },500);
+
+}
+
+</script>
+
+</body>
+  </html>
