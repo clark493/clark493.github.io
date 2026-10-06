@@ -1827,7 +1827,22 @@ function pagePrecedente() {
   }
 
 }
+function searchAnime() {
+  const input = document.getElementById("searchInput");
+  const recherche = input.value.toLowerCase().trim();
 
+  const cartes = document.querySelectorAll(".anime-card");
+
+  cartes.forEach(function(carte) {
+    const titre = (carte.dataset.title || "").toLowerCase();
+
+    if (titre.includes(recherche)) {
+      carte.style.display = "";
+    } else {
+      carte.style.display = "none";
+    }
+  });
+   }
 </script>
 
 </body>
