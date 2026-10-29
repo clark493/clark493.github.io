@@ -1,1 +1,438 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b0710">
+<title>Rabesaiky Anime</title>
+<style>
+:root{--bg:#0b0710;--panel:#19101f;--pink:#ff3e9d;--muted:#c9b8cd}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:white;font-family:Arial,sans-serif}
+button,input{font:inherit}
+button{cursor:pointer;border:0;border-radius:10px;padding:12px 15px;background:#321832;color:white;font-weight:bold}
+button:active{transform:scale(.98)}
+header{background:#160d1b;padding:18px 16px;border-bottom:1px solid #48203e}
+.logo{font-size:23px;font-weight:900;margin-bottom:17px}
+.logo span{color:var(--pink)}
+.search{width:100%;padding:14px;border-radius:12px;background:#241528;border:1px solid #60334f;color:white;outline:none}
+.search:focus{border-color:var(--pink)}
+nav,.filters{display:flex;gap:9px;flex-wrap:wrap;margin-top:13px}
+.pink,.active{background:var(--pink);color:white}
+.hero{padding:34px 20px;background:linear-gradient(135deg,#481132,#1a0b20 65%,#0b0710);border-bottom:1px solid #4b2041}
+.hero small{color:#ffa2d2;letter-spacing:2px}
+h1{font-size:clamp(40px,10vw,65px);line-height:1.05;margin:17px 0}
+h1 span{color:var(--pink)}
+.hero p{color:#e0cddd;line-height:1.7}
+section{padding:23px 15px}
+h2{font-size:23px}
+.filters{margin-bottom:18px}
+.filters button{border:1px solid #492741}
+.filters button.active{border-color:var(--pink)}
+#status{color:#ff9ccc;line-height:1.6}
+#retry{display:none;margin:8px 0 15px}
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.card{min-width:0;overflow:hidden;background:var(--panel);border:1px solid #39233c;border-radius:15px}
+.poster{height:220px;position:relative;overflow:hidden;background:linear-gradient(145deg,#a42c72,#251029);display:flex;align-items:center;justify-content:center;text-align:center;padding:12px}
+.poster img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.poster .fallback{font-size:21px;font-weight:bold;text-shadow:0 2px 8px #000}
+.poster .fallback small{display:block;color:#ffb4d8;font-size:10px;letter-spacing:2px;margin-top:10px}
+.heart{position:absolute;right:8px;top:8px;z-index:2;border-radius:50%;width:40px;height:40px;padding:0;background:#100914eF;color:#ff8ac5;font-size:24px}
+.info{padding:11px}
+.info h3{font-size:15px;line-height:1.35;margin:0 0 8px}
+.meta{font-size:12px;color:var(--muted);line-height:1.5;margin:0 0 12px}
+.watch{width:100%;padding:11px 5px;background:#3a1936;font-size:13px}
+.empty{padding:20px 0;color:var(--muted);line-height:1.6}
+footer{text-align:center;padding:25px 12px;background:#160c1b;color:var(--muted);line-height:1.8;font-size:13px}
+.modal{display:none;position:fixed;inset:0;z-index:20;background:#000e;overflow:auto;padding:14px}
+.modal.show{display:block}
+.dialog{max-width:650px;margin:20px auto;background:#1b1021;border:1px solid var(--pink);border-radius:16px;padding:18px}
+.close{float:right;background:#3a1936}
+#details{clear:both;padding-top:14px}
+.summary{color:#d8c7db;line-height:1.7}
+.video{margin-top:15px;background:#08060b;border-radius:12px;overflow:hidden}
+.video iframe{width:100%;aspect-ratio:16/9;border:0;display:block}
+.video-placeholder{text-align:center;padding:22px}
+.video-placeholder .play{font-size:42px;color:var(--pink)}
+.video-placeholder p{color:var(--muted);font-size:13px;line-height:1.6}
+.link{display:inline-block;margin-top:8px;padding:12px;background:var(--pink);border-radius:9px;color:white;text-decoration:none;font-weight:bold}
+@media(min-width:650px){
+ header{padding:20px 5%}
+ .search{max-width:520px}
+ .hero{padding:60px 6%}
+ section{padding:30px 5%}
+ .grid{grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+ .poster{height:290px}
+}
+</style>
+</head>
+<body>
 
+<header>
+  <div class="logo">RABESAIKY <span>ANIME ♡</span></div>
+  <input id="search" class="search" placeholder="🔎 Rechercher un anime..." autocomplete="off">
+  <nav>
+    <button onclick="home()">⌂ Accueil</button>
+    <button onclick="showFavorites()">♡ Favoris (<span id="count">0</span>)</button>
+  </nav>
+</header>
+
+<div class="hero">
+  <small>BIENVENUE DANS TON UNIVERS</small>
+  <h1>Le monde<br><span>Anime.</span></h1>
+  <p>Explore des univers incroyables, découvre tes héros préférés et garde tes coups de cœur.</p>
+  <button class="pink" onclick="document.getElementById('catalogue').scrollIntoView({behavior:'smooth'})">▶ Explorer les animés</button>
+</div>
+
+<section id="catalogue">
+  <h2 id="heading">✨ 50 animés populaires</h2>
+  <div class="filters" id="filters">
+    <button class="active" data-cat="Tous">Tous</button>
+    <button data-cat="Action">Action</button>
+    <button data-cat="Aventure">Aventure</button>
+    <button data-cat="Fantasy">Fantasy</button>
+    <button data-cat="Romance">Romance</button>
+    <button data-cat="Comédie">Comédie</button>
+  </div>
+  <p id="status">Chargement des animés et des affiches…</p>
+  <button id="retry" class="pink" onclick="loadAnime()">↻ Réessayer</button>
+  <div class="grid" id="grid"></div>
+</section>
+
+<div class="modal" id="modal">
+  <div class="dialog">
+    <button class="close" onclick="closePlayer()">✕ Fermer</button>
+    <div id="details"></div>
+    <h3>▶ Bande-annonce</h3>
+    <div id="video" class="video">
+      <div class="video-placeholder">Chargement…</div>
+    </div>
+    <p class="summary">Si la vidéo ne peut pas être lue ici, utilise le lien YouTube. Les épisodes complets nécessitent une source de diffusion autorisée.</p>
+  </div>
+</div>
+
+<footer>
+  <strong style="color:white">RABESAIKY <span style="color:#ff3e9d">ANIME ♡</span></strong><br>
+  Ton univers anime préféré<br>© 2026 Rabesaiky Anime
+</footer>
+
+<script>
+const API="https://api.tenrai.org/v1";
+const CACHE="rabesaiky-anime-cache-v1";
+const FAVKEY="rabesaiky-favorites-v1";
+
+let anime=[];
+let category="Tous";
+let favMode=false;
+let favorites=[];
+let loadToken=0;
+
+try{
+  favorites=JSON.parse(localStorage.getItem(FAVKEY)||"[]");
+  if(!Array.isArray(favorites))favorites=[];
+}catch(e){favorites=[];}
+
+const $=id=>document.getElementById(id);
+
+function updateCount(){
+  $("count").textContent=favorites.length;
+}
+
+function saveFavorites(){
+  try{
+    localStorage.setItem(FAVKEY,JSON.stringify(favorites));
+  }catch(e){}
+  updateCount();
+}
+
+function titleOf(a){
+  return a.title_english||a.title||"Anime";
+}
+
+function genresOf(a){
+  return (a.genres||[]).map(g=>g.name.toLowerCase());
+}
+
+function categoryMatch(a){
+  if(category==="Tous")return true;
+  const g=genresOf(a);
+  const map={
+    "Action":["action"],
+    "Aventure":["adventure"],
+    "Fantasy":["fantasy","supernatural"],
+    "Romance":["romance"],
+    "Comédie":["comedy"]
+  };
+  return (map[category]||[]).some(x=>g.includes(x));
+}
+
+function render(){
+  const query=$("search").value.trim().toLowerCase();
+  const list=anime.filter(a=>{
+    const title=(a.title||"").toLowerCase();
+    const english=(a.title_english||"").toLowerCase();
+    const matchTitle=!query||title.includes(query)||english.includes(query);
+    return matchTitle&&categoryMatch(a)&&(!favMode||favorites.includes(a.mal_id));
+  });
+
+  $("grid").innerHTML="";
+  $("heading").textContent=favMode?"♡ Mes favoris":"✨ "+anime.length+" animés populaires";
+
+  if(!list.length){
+    $("status").textContent=favMode
+      ?"Aucun favori pour le moment. Appuie sur le cœur d'un anime pour l'ajouter."
+      :anime.length?"Aucun résultat. Essaie un autre nom ou une autre catégorie.":"";
+    return;
+  }
+
+  $("status").textContent="";
+
+  list.forEach(a=>{
+    const card=document.createElement("article");
+    card.className="card";
+
+    const poster=document.createElement("div");
+    poster.className="poster";
+
+    const fallback=document.createElement("div");
+    fallback.className="fallback";
+    fallback.textContent=titleOf(a);
+    const brand=document.createElement("small");
+    brand.textContent="RABESAIKY ANIME";
+    fallback.appendChild(brand);
+    poster.appendChild(fallback);
+
+    const imgURL=a.images&&a.images.jpg&&
+      (a.images.jpg.large_image_url||a.images.jpg.image_url);
+
+    if(imgURL){
+      const img=document.createElement("img");
+      img.src=imgURL;
+      img.alt="Affiche de "+titleOf(a);
+      img.loading="lazy";
+      img.onerror=()=>img.remove();
+      poster.appendChild(img);
+    }
+
+    const heart=document.createElement("button");
+    heart.className="heart";
+    heart.textContent=favorites.includes(a.mal_id)?"♥":"♡";
+    heart.setAttribute("aria-label","Ajouter ou retirer des favoris");
+    heart.onclick=()=>{
+      favorites=favorites.includes(a.mal_id)
+        ?favorites.filter(id=>id!==a.mal_id)
+        :[...favorites,a.mal_id];
+      saveFavorites();
+      render();
+    };
+    poster.appendChild(heart);
+
+    const info=document.createElement("div");
+    info.className="info";
+
+    const h=document.createElement("h3");
+    h.textContent=titleOf(a);
+
+    const meta=document.createElement("p");
+    meta.className="meta";
+    const year=a.year||(a.aired&&a.aired.prop&&a.aired.prop.from&&a.aired.prop.from.year)||"—";
+    meta.textContent="★ "+(a.score||"—")+" · "+year;
+
+    const watch=document.createElement("button");
+    watch.className="watch";
+    watch.textContent="▶ Détails & vidéo";
+    watch.onclick=()=>openPlayer(a);
+
+    info.append(h,meta,watch);
+    card.append(poster,info);
+    $("grid").appendChild(card);
+  });
+}
+
+async function fetchPage(page){
+  const url=API+"/top/anime?filter=bypopularity&limit=25&page="+page;
+  const response=await fetch(url);
+  if(!response.ok)throw Error("Catalogue indisponible ("+response.status+")");
+  const result=await response.json();
+  return result.data||[];
+}
+
+async function loadAnime(){
+  const token=++loadToken;
+  $("retry").style.display="none";
+  $("status").textContent="Chargement des affiches…";
+  
+  try{
+    const cached=localStorage.getItem(CACHE);
+    if(cached){
+      const saved=JSON.parse(cached);
+      if(Array.isArray(saved)&&saved.length){
+        anime=saved;
+        render();
+        $("status").textContent="Mise à jour du catalogue…";
+      }
+    }
+  }catch(e){}
+
+  try{
+    const first=await fetchPage(1);
+    if(token!==loadToken)return;
+    anime=first;
+    render();
+    $("status").textContent="Chargement des autres animés…";
+
+    await new Promise(resolve=>setTimeout(resolve,500));
+    const second=await fetchPage(2);
+    if(token!==loadToken)return;
+
+    const combined=[...first,...second];
+    const unique=[];
+    const ids=new Set();
+
+    combined.forEach(a=>{
+      if(a.mal_id&&!ids.has(a.mal_id)){
+        ids.add(a.mal_id);
+        unique.push(a);
+      }
+    });
+
+    anime=unique.slice(0,50);
+    try{localStorage.setItem(CACHE,JSON.stringify(anime));}catch(e){}
+    render();
+    $("status").textContent=anime.length
+      ?anime.length+" animés chargés.":"Aucun anime reçu.";
+  }catch(e){
+    if(token!==loadToken)return;
+    render();
+    if(anime.length){
+      $("status").textContent="Catalogue enregistré affiché. Internet ne permet pas de le mettre à jour pour le moment.";
+    }else{
+      $("status").textContent="Impossible de charger les animés. Vérifie ta connexion Internet puis réessaie.";
+    }
+    $("retry").style.display="inline-block";
+  }
+}
+
+function home(){
+  favMode=false;
+  category="Tous";
+  $("search").value="";
+  document.querySelectorAll("#filters button").forEach(b=>{
+    b.classList.toggle("active",b.dataset.cat==="Tous");
+  });
+  render();
+  window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function showFavorites(){
+  favMode=true;
+  render();
+  $("catalogue").scrollIntoView({behavior:"smooth"});
+}
+
+$("filters").addEventListener("click",event=>{
+  const button=event.target.closest("button[data-cat]");
+  if(!button)return;
+  category=button.dataset.cat;
+  document.querySelectorAll("#filters button").forEach(b=>{
+    b.classList.toggle("active",b===button);
+  });
+  render();
+});
+
+$("search").addEventListener("input",render);
+
+async function openPlayer(a){
+  $("modal").classList.add("show");
+  $("details").innerHTML="";
+  
+  const h=document.createElement("h2");
+  h.textContent=titleOf(a);
+  const meta=document.createElement("p");
+  meta.className="summary";
+  meta.textContent="★ "+(a.score||"—")+
+    (a.year?" · "+a.year:"")+
+    " · "+(a.episodes||"?")+" épisodes";
+  const desc=document.createElement("p");
+  desc.className="summary";
+  desc.textContent=a.synopsis||"Résumé non disponible.";
+  $("details").append(h,meta,desc);
+
+  $("video").innerHTML='<div class="video-placeholder"><div class="play">▶</div><p>Recherche de la bande-annonce…</p></div>';
+
+  const searchURL="https://www.youtube.com/results?search_query="+
+    encodeURIComponent(titleOf(a)+" anime official trailer");
+
+  try{
+    let embed=a.trailer&&a.trailer.embed_url;
+
+    if(!embed){
+      const response=await fetch(API+"/anime/"+a.mal_id+"/videos");
+      if(response.ok){
+        const result=await response.json();
+        const promos=result.data&&result.data.promo||[];
+        embed=promos.length&&promos[0].trailer&&promos[0].trailer.embed_url;
+        if(!embed&&result.data&&result.data.episodes&&result.data.episodes.length){
+          embed=result.data.episodes[0].url;
+        }
+      }
+    }
+
+    $("video").innerHTML="";
+
+    if(embed&&embed.includes("youtube.com/embed/")){
+      const frame=document.createElement("iframe");
+      frame.src=embed;
+      frame.title="Bande-annonce de "+titleOf(a);
+      frame.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share";
+      frame.allowFullscreen=true;
+      frame.loading="lazy";
+      $("video").appendChild(frame);
+    }else{
+      const placeholder=document.createElement("div");
+      placeholder.className="video-placeholder";
+      placeholder.innerHTML='<div class="play">▶</div><p>Aucune vidéo intégrable disponible pour le moment.</p>';
+      const link=document.createElement("a");
+      link.className="link";
+      link.href=searchURL;
+      link.target="_blank";
+      link.rel="noopener";
+      link.textContent="Voir sur YouTube";
+      placeholder.appendChild(link);
+      $("video").appendChild(placeholder);
+    }
+  }catch(e){
+    $("video").innerHTML="";
+    const placeholder=document.createElement("div");
+    placeholder.className="video-placeholder";
+    const message=document.createElement("p");
+    message.textContent="La vidéo n'a pas pu être chargée.";
+    const link=document.createElement("a");
+    link.className="link";
+    link.href=searchURL;
+    link.target="_blank";
+    link.rel="noopener";
+    link.textContent="Chercher la bande-annonce sur YouTube";
+    placeholder.append(message,link);
+    $("video").appendChild(placeholder);
+  }
+}
+
+function closePlayer(){
+  $("modal").classList.remove("show");
+  $("video").innerHTML="";
+}
+
+$("modal").addEventListener("click",e=>{
+  if(e.target===$("modal"))closePlayer();
+});
+
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape")closePlayer();
+});
+
+updateCount();
+loadAnime();
+</script>
+</body>
+  </html>
